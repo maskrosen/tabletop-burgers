@@ -103,6 +103,15 @@
     <Resource Include="Images\Lighthouse.jpg" />
     <Resource Include="Images\Penguins.jpg" />
     <Resource Include="Images\Tulips.jpg" />
+    <Resource Include="Images\Champignon.jpg" />
+    <Resource Include="Images\cheese clipart.png" />
+    <Resource Include="Images\coke drink clipart.png" />
+    <Resource Include="Images\cucumber clip art.png" />
+    <Resource Include="Images\ketchup clipart.png" />
+    <Resource Include="Images\lettuche clipart.jpg" />
+    <Resource Include="Images\mustard clipart.png" />
+    <Resource Include="Images\Onion clip art.png" />
+    <Resource Include="Images\tomato clip art.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
