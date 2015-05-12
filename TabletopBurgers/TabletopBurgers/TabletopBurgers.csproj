@@ -108,10 +108,10 @@
     <Resource Include="Images\coke drink clipart.png" />
     <Resource Include="Images\cucumber clip art.png" />
     <Resource Include="Images\ketchup clipart.png" />
-    <Resource Include="Images\lettuche clipart.jpg" />
     <Resource Include="Images\mustard clipart.png" />
     <Resource Include="Images\Onion clip art.png" />
     <Resource Include="Images\tomato clip art.png" />
+    <Resource Include="Images\lettuce clipart.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -73,14 +73,15 @@ namespace Drag_and_Drop
             base.OnInitialized(e);
             DataContext = this;
 
-            LibraryItems.Add(new PhotoData("Images/Chrysanthemum.jpg", "Chrysanthemum"));
-            LibraryItems.Add(new PhotoData("Images/Desert.jpg", "Desert"));
-            LibraryItems.Add(new PhotoData("Images/Hydrangeas.jpg", "Hydrangeas"));
-            LibraryItems.Add(new PhotoData("Images/Jellyfish.jpg", "Jellyfish"));
-            LibraryItems.Add(new PhotoData("Images/Koala.jpg", "Koala"));
-            LibraryItems.Add(new PhotoData("Images/Lighthouse.jpg", "Lighthouse"));
-            LibraryItems.Add(new PhotoData("Images/Penguins.jpg", "Penguins"));
-            LibraryItems.Add(new PhotoData("Images/Tulips.jpg", "Tulips"));
+            LibraryItems.Add(new PhotoData("Images/Champignon.jpg", "Champignon"));
+            LibraryItems.Add(new PhotoData("Images/mustard clipart.png", "Mustard"));
+            LibraryItems.Add(new PhotoData("Images/cheese clipart.png", "Cheese"));
+            LibraryItems.Add(new PhotoData("Images/coke drink clipart.png", "Coke"));
+            LibraryItems.Add(new PhotoData("Images/cucumber clip art.png", "cucumber"));
+            LibraryItems.Add(new PhotoData("Images/ketchup clipart.png", "Ketchup"));
+            LibraryItems.Add(new PhotoData("Images/lettuce clipart.png", "Lettuce"));
+            LibraryItems.Add(new PhotoData("Images/Onion clip art.png", "Onion"));
+            LibraryItems.Add(new PhotoData("Images/tomato clip art.png", "Tomato"));
         }
 
         /// <summary>
