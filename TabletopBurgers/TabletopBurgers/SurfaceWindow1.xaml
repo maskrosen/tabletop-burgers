@@ -18,7 +18,7 @@
         </DataTemplate>
         
         <Style x:Key="CursorStyle" TargetType="{x:Type ContentControl}">
-            <Setter Property="ContentTemplate" Value="{StaticResource ImageAndCaptionTemplate}" />
+            <Setter Property="ContentTemplate" Value="{StaticResource ImageOnlyTemplate}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
