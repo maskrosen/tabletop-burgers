@@ -27,6 +27,7 @@ namespace Drag_and_Drop
         #region Collections
         private ObservableCollection<PhotoData> libraryItems;
         private ObservableCollection<PhotoData> scatterItems;
+        private Dictionary<int, Tag> tagItems;
 
         public ObservableCollection<PhotoData> LibraryItems
         {
@@ -53,6 +54,20 @@ namespace Drag_and_Drop
                 return scatterItems;
             }
         }
+
+        public Dictionary<int, Tag> TagItems
+        {
+            get
+            {
+                if (tagItems == null)
+                {
+                    tagItems = new Dictionary<int, Tag>();
+                }
+
+                return tagItems;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -82,6 +97,13 @@ namespace Drag_and_Drop
             LibraryItems.Add(new PhotoData("Images/lettuce clipart.png", "Lettuce"));
             LibraryItems.Add(new PhotoData("Images/Onion clip art.png", "Onion"));
             LibraryItems.Add(new PhotoData("Images/tomato clip art.png", "Tomato"));
+
+            TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
+            TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));
+            TagItems.Add(3, new Tag(3, 987, "Uppsala", new DateTime(2015, 5, 20, 12, 35, 0), 3, false, -1));
+            TagItems.Add(4, new Tag(4, 341, "Oslo", new DateTime(2015, 5, 20, 11, 20, 0), 15, true, 3));
+            TagItems.Add(5, new Tag(5, 501, "Malmö", new DateTime(2015, 5, 20, 11, 22, 0), -1, false, -1));
+            TagItems.Add(6, new Tag(6, 2453, "Jönköping", new DateTime(2015, 5, 20, 12, 03, 0), 12, true, 10));
         }
 
         /// <summary>
