@@ -26,7 +26,11 @@ namespace Drag_and_Drop
     {
         #region Collections
         private ObservableCollection<PhotoData> libraryItems;
-        private ObservableCollection<PhotoData> scatterItems;
+        private ObservableCollection<PhotoData> scatterItemsTop;
+        private ObservableCollection<PhotoData> scatterItemsBottom;
+        private ObservableCollection<PhotoData> scatterItemsRight;
+        private ObservableCollection<PhotoData> scatterItemsLeft;
+
         private Dictionary<int, Tag> tagItems;
 
         public ObservableCollection<PhotoData> LibraryItems
@@ -42,16 +46,55 @@ namespace Drag_and_Drop
             }
         }
 
-        public ObservableCollection<PhotoData> ScatterItems
+        public ObservableCollection<PhotoData> ScatterItemsTop
         {
             get
             {
-                if (scatterItems == null)
+                if (scatterItemsTop == null)
                 {
-                    scatterItems = new ObservableCollection<PhotoData>();
+                    scatterItemsTop = new ObservableCollection<PhotoData>();
                 }
 
-                return scatterItems;
+                return scatterItemsTop;
+            }
+        }
+
+        public ObservableCollection<PhotoData> ScatterItemsBottom
+        {
+            get
+            {
+                if (scatterItemsBottom == null)
+                {
+                    scatterItemsBottom = new ObservableCollection<PhotoData>();
+                }
+
+                return scatterItemsBottom;
+            }
+        }
+
+        public ObservableCollection<PhotoData> ScatterItemsRight
+        {
+            get
+            {
+                if (scatterItemsRight == null)
+                {
+                    scatterItemsRight = new ObservableCollection<PhotoData>();
+                }
+
+                return scatterItemsRight;
+            }
+        }
+
+        public ObservableCollection<PhotoData> ScatterItemsLeft
+        {
+            get
+            {
+                if (scatterItemsLeft == null)
+                {
+                    scatterItemsLeft = new ObservableCollection<PhotoData>();
+                }
+
+                return scatterItemsLeft;
             }
         }
 
@@ -234,18 +277,19 @@ namespace Drag_and_Drop
         private void Scatter_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData data = e.Cursor.Data as PhotoData;
-            ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+          /* ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
             if (svi != null)
             {
                 svi.Visibility = Visibility.Visible;
-            }
+            }*/
         }
 
         private void Scatter_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
         {
-            if (e.Cursor.CurrentTarget != scatterBottom && e.Cursor.Effects == DragDropEffects.Move)
+            if ((e.Cursor.CurrentTarget != scatterBottom || e.Cursor.CurrentTarget != scatterTop || e.Cursor.CurrentTarget != scatterRight || e.Cursor.CurrentTarget != scatterLeft) && e.Cursor.Effects == DragDropEffects.Move)
             {
-                ScatterItems.Remove(e.Cursor.Data as PhotoData);
+                //ScatterItemsTop.Remove(e.Cursor.Data as PhotoData);
+        
                 e.Handled = true;
             }
         }
@@ -255,16 +299,43 @@ namespace Drag_and_Drop
             PhotoData photo=(PhotoData)e.Cursor.Data;
             PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption);
             // If it isn't already on the ScatterView, add it to the source collection.
-            ScatterItems.Add(clonedPhoto);
+           
+             ScatterViewItem svi;
+            if (e.Cursor.CurrentTarget == scatterBottom)
+            {
+                ScatterItemsBottom.Add(clonedPhoto);
+                svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Center = e.Cursor.GetPosition(scatterBottom);
+                svi.Orientation = e.Cursor.GetOrientation(scatterBottom);
+
+            }
+            else if (e.Cursor.CurrentTarget == scatterTop)
+            {
+                ScatterItemsTop.Add(clonedPhoto);
+                svi = scatterTop.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Center = e.Cursor.GetPosition(scatterTop);
+                svi.Orientation = e.Cursor.GetOrientation(scatterTop);
+            }
+            else if (e.Cursor.CurrentTarget == scatterLeft)
+            {
+                ScatterItemsLeft.Add(clonedPhoto);
+                svi = scatterLeft.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Center = e.Cursor.GetPosition(scatterLeft);
+                svi.Orientation = e.Cursor.GetOrientation(scatterLeft);
+            }
+            else 
+            {
+                ScatterItemsRight.Add(clonedPhoto);
+                svi = scatterRight.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Center = e.Cursor.GetPosition(scatterRight);
+                svi.Orientation = e.Cursor.GetOrientation(scatterRight);
+            }
 
             // Get the ScatterViewItem that Scatter automatically generated.
-            ScatterViewItem svi =
-                scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+         
             svi.Visibility = System.Windows.Visibility.Visible;
             svi.Width = e.Cursor.Visual.ActualWidth;
             svi.Height = e.Cursor.Visual.ActualHeight;
-            svi.Center = e.Cursor.GetPosition(scatterBottom);
-            svi.Orientation = e.Cursor.GetOrientation(scatterBottom);
             svi.Background = Brushes.Transparent;
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;
