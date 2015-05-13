@@ -7,7 +7,7 @@
     
     <s:SurfaceWindow.Resources>
         <DataTemplate x:Key="ImageOnlyTemplate">
-            <Image Source="{Binding Source}"  MaxWidth="30" ToolTip="{Binding Caption}"/>
+            <Image Source="{Binding Source}"  MaxWidth="40" MaxHeight="40" ToolTip="{Binding Caption}"/>
         </DataTemplate>
         
         <Style x:Key="CursorStyle" TargetType="{x:Type ContentControl}">
@@ -27,44 +27,15 @@
 
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.2*" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*" />
             <ColumnDefinition Width="4*" />
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
-
-        <!--<s:LibraryContainer 
-            Grid.Row="0"
-            x:Name="LibraryContainer"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding Path=LibraryItems}">
-            <s:LibraryContainer.BarView>
-                <s:BarView ItemTemplate="{StaticResource ImageAndCaptionTemplate}" />
-            </s:LibraryContainer.BarView>
-            <s:LibraryContainer.StackView>
-                <s:StackView ItemTemplate="{StaticResource ImageOnlyTemplate}" />
-            </s:LibraryContainer.StackView>
-        </s:LibraryContainer>-->
-
-        <!--<s:LibraryBar 
-            Grid.Row="0"
-            x:Name="LibraryContainer"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}" 
-            />-->
-
-        <!--<s:LibraryStack 
-            Grid.Row="0"
-            x:Name="LibraryContainer"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}" 
-            />-->
  
         <s:SurfaceListBox 
             Grid.Row="0"
@@ -92,7 +63,7 @@
             Grid.Row="2"
             Grid.ColumnSpan="3"
             x:Name="ListBoxDown"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItems}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
@@ -116,7 +87,7 @@
             Grid.Row="1"
             Grid.RowSpan="1"
             x:Name="ListBoxLeft"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             ItemsSource="{Binding Path=LibraryItems}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
@@ -140,7 +111,7 @@
             Grid.Row="1"
             Grid.RowSpan="1"
             x:Name="ListBoxRight"
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Center"
             ItemsSource="{Binding Path=LibraryItems}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
