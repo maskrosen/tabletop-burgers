@@ -324,42 +324,24 @@ namespace Drag_and_Drop
 
             // Prevents the default touch behavior from happening and disrupting our code.
             e.Handled = true;
-
-            // Gray out the SurfaceListBoxItem for now. We will remove it if the DragDrop is successful.
-           // draggedElement.Opacity = 0.5;
         }
 
         private void ListBox_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
-            PhotoData data = e.Cursor.Data as PhotoData;
-            SurfaceListBoxItem boxItem = ListBox.ItemContainerGenerator.ContainerFromItem(data) as SurfaceListBoxItem;
-           /* if (boxItem != null)
-            {
-                boxItem.Opacity = 1.0;
-            }*/
+            
+
         }
 
         private void ListBox_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
         {
             if (e.Cursor.CurrentTarget != ListBox && e.Cursor.Effects == DragDropEffects.Move)
             {
-               // LibraryItems.Remove(e.Cursor.Data as PhotoData);
                 e.Handled = true;
             }
         }
 
         private void ListBox_Drop(object sender, SurfaceDragDropEventArgs e)
         {
-            // If it isn't already on the ListBox, add it to the source collection.
-            if (!LibraryItems.Contains(e.Cursor.Data))
-            {
-                LibraryItems.Add((PhotoData)e.Cursor.Data);
-            }
-
-            // Get the SurfaceListBoxItem that ListBox automatically generated.
-            SurfaceListBoxItem boxItem =
-                ListBox.ItemContainerGenerator.ContainerFromItem(e.Cursor.Data) as SurfaceListBoxItem;
-            boxItem.Visibility = System.Windows.Visibility.Visible;
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;
         }
