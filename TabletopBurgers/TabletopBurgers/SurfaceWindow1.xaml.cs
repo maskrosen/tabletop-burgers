@@ -261,7 +261,7 @@ namespace Drag_and_Drop
             ContentControl cursorVisual = new ContentControl()
             {
                 Content = draggedElement.DataContext,
-                Style = FindResource("CursorStyle") as Style
+                Style = FindResource("HamburgerCursorStyle") as Style
             };
 
             // Create a list of input devices. Add the touches that
@@ -387,7 +387,7 @@ namespace Drag_and_Drop
             ContentControl cursorVisual = new ContentControl()
             {
                 Content = draggedElement.DataContext,
-                Style = FindResource("CursorStyle") as Style
+                Style = FindResource("HamburgerCursorStyle") as Style
             };
 
             // Create a list of input devices. Add the touches that
@@ -435,63 +435,6 @@ namespace Drag_and_Drop
         private void ListBox_Drop(object sender, SurfaceDragDropEventArgs e)
         {
             // Setting e.Handle to true ensures that default behavior is not performed.
-            e.Handled = true;
-        }
-
-
-        private void Burger_PreviewTouchDown(object sender, TouchEventArgs e)
-        {
-            FrameworkElement findSource = e.OriginalSource as FrameworkElement;
-            SurfaceListBoxItem draggedElement = null;
-
-            // Find the SurfaceListBoxItem object that is being touched.
-            while (draggedElement == null && findSource != null)
-            {
-                if ((draggedElement = findSource as SurfaceListBoxItem) == null)
-                {
-                    findSource = VisualTreeHelper.GetParent(findSource) as FrameworkElement;
-                }
-            }
-
-            if (draggedElement == null)
-            {
-                return;
-            }
-
-            PhotoData data = draggedElement.Content as PhotoData;
-
-            // Create the cursor visual
-            ContentControl cursorVisual = new ContentControl()
-            {
-                Content = draggedElement.DataContext,
-                Style = FindResource("HamburgerCursorStyle") as Style
-            };
-
-            // Create a list of input devices. Add the touches that
-            // are currently captured within the dragged element and
-            // the current touch (if it isn't already in the list).
-            List<InputDevice> devices = new List<InputDevice>();
-            devices.Add(e.TouchDevice);
-            foreach (TouchDevice touch in draggedElement.TouchesCapturedWithin)
-            {
-                if (touch != e.TouchDevice)
-                {
-                    devices.Add(touch);
-                }
-            }
-
-            // Get the drag source object
-            ItemsControl dragSource = ItemsControl.ItemsControlFromItemContainer(draggedElement);
-
-            SurfaceDragDrop.BeginDragDrop(
-                dragSource,
-                draggedElement,
-                cursorVisual,
-                draggedElement.DataContext,
-                devices,
-                DragDropEffects.Move);
-
-            // Prevents the default touch behavior from happening and disrupting our code.
             e.Handled = true;
         }
 

@@ -14,21 +14,12 @@
             <Image Source="{Binding Source}"  MaxWidth="110" MaxHeight="110" ToolTip="{Binding Caption}"/>
         </DataTemplate>
 
-        <Style x:Key="CursorStyle" TargetType="{x:Type ContentControl}">
-            <Setter Property="ContentTemplate" Value="{StaticResource ImageOnlyTemplate}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ContentControl}">
-                        <ContentPresenter
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}">
-                        </ContentPresenter>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <DataTemplate x:Key="ScatterViewImage">
+            <Image Source="{Binding Source}"  MaxWidth="500" MaxHeight="500" ToolTip="{Binding Caption}"/>
+        </DataTemplate>
+
         <Style x:Key="HamburgerCursorStyle" TargetType="{x:Type ContentControl}">
-            <Setter Property="ContentTemplate" Value="{StaticResource BurgerImage}" />
+            <Setter Property="ContentTemplate" Value="{StaticResource ScatterViewImage}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
@@ -163,7 +154,7 @@
             x:Name="scatterLeft"
             Background="LightYellow"
             AllowDrop="True"
-            ItemTemplate="{StaticResource BurgerImage}"
+            ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsLeft}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -178,7 +169,7 @@
             x:Name="scatterRight"
             Background="LightGreen"
             AllowDrop="True"
-            ItemTemplate="{StaticResource BurgerImage}"
+            ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsRight}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -193,7 +184,7 @@
             x:Name="scatterTop"
             Background="Blue"
             AllowDrop="True"
-            ItemTemplate="{StaticResource BurgerImage}"
+            ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsTop}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -208,7 +199,7 @@
             x:Name="scatterBottom"
             Background="LightBlue"
             AllowDrop="True"
-            ItemTemplate="{StaticResource BurgerImage}"
+            ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsBottom}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -227,7 +218,7 @@
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
-            PreviewTouchDown="Burger_PreviewTouchDown"
+            PreviewTouchDown="ListBox_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="ListBox_DragCanceled"
             s:SurfaceDragDrop.DragCompleted="ListBox_DragCompleted"
             s:SurfaceDragDrop.Drop="ListBox_Drop">
