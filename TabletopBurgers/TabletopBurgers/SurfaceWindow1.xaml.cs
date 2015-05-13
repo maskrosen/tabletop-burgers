@@ -355,9 +355,21 @@ namespace Drag_and_Drop
             // Get the ScatterViewItem that Scatter automatically generated.
          
             svi.Visibility = System.Windows.Visibility.Visible;
-            svi.Width = e.Cursor.Visual.ActualWidth;
-            svi.Height = e.Cursor.Visual.ActualHeight;
+            svi.Width = 150;
+            svi.Height = 150;
             svi.Background = Brushes.Transparent;
+
+            RoutedEventHandler loadedEventHandler = null;
+            loadedEventHandler = new RoutedEventHandler(delegate
+            {
+                svi.Loaded -= loadedEventHandler;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc.Visibility = Visibility.Hidden;
+            });
+            svi.Loaded += loadedEventHandler;
+
+
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;
         }

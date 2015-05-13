@@ -15,7 +15,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ScatterViewImage">
-            <Image Source="{Binding Source}"  MaxWidth="500" MaxHeight="500" ToolTip="{Binding Caption}"/>
+            <Image Source="{Binding Source}" MaxWidth="150" MaxHeight="150" ToolTip="{Binding Caption}"/>
         </DataTemplate>
 
         <Style x:Key="HamburgerCursorStyle" TargetType="{x:Type ContentControl}">
