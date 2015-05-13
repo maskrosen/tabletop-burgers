@@ -88,15 +88,15 @@ namespace Drag_and_Drop
             base.OnInitialized(e);
             DataContext = this;
 
-            LibraryItems.Add(new PhotoData("Images/Champignon.jpg", "Champignon"));
-            LibraryItems.Add(new PhotoData("Images/mustard clipart.png", "Mustard"));
-            LibraryItems.Add(new PhotoData("Images/cheese clipart.png", "Cheese"));
-            LibraryItems.Add(new PhotoData("Images/coke drink clipart.png", "Coke"));
-            LibraryItems.Add(new PhotoData("Images/cucumber clip art.png", "cucumber"));
-            LibraryItems.Add(new PhotoData("Images/ketchup clipart.png", "Ketchup"));
-            LibraryItems.Add(new PhotoData("Images/lettuce clipart.png", "Lettuce"));
-            LibraryItems.Add(new PhotoData("Images/Onion clip art.png", "Onion"));
-            LibraryItems.Add(new PhotoData("Images/tomato clip art.png", "Tomato"));
+            LibraryItems.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread"));
+            LibraryItems.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread"));
+            LibraryItems.Add(new PhotoData("Images/CucumberTS.png", "Cucumber"));
+            LibraryItems.Add(new PhotoData("Images/DobleCheeseTS.png", "Cheese"));
+            LibraryItems.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat"));
+            LibraryItems.Add(new PhotoData("Images/KetchupTS.jpg", "Ketchup"));
+            LibraryItems.Add(new PhotoData("Images/LattuesTS.png", "Lettuce"));
+            LibraryItems.Add(new PhotoData("Images/MeetTS.png", "Meat 2"));
+            LibraryItems.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato"));
 
             TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
             TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));
