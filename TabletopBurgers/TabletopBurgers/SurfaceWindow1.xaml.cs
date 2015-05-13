@@ -223,6 +223,11 @@ namespace Drag_and_Drop
             BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
             BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
             BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
+            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
         }
 
         /// <summary>

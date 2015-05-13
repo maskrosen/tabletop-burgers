@@ -6,12 +6,27 @@
     >
     
     <s:SurfaceWindow.Resources>
+        <Storyboard x:Key="imageRotationStoryboard" Storyboard.TargetName="CenterImage" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+            <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:5" RepeatBehavior="Forever" />
+        </Storyboard>
+        
         <DataTemplate x:Key="ImageOnlyTemplate">
             <Image Source="{Binding Source}"  MaxWidth="40" MaxHeight="40" ToolTip="{Binding Caption}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="BurgerImage">
-            <Image Source="{Binding Source}"  MaxWidth="110" MaxHeight="110" ToolTip="{Binding Caption}"/>
+            <Image Source="{Binding Source}" Name="CenterImage" MaxWidth="110" MaxHeight="110"  RenderTransformOrigin="0.5, 0.5" ToolTip="{Binding Caption}">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Storyboard="{StaticResource imageRotationStoryboard}" />
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Image.Triggers>
+                <Image.RenderTransform>
+                    <RotateTransform Angle="0" />
+                </Image.RenderTransform>
+            </Image>         
         </DataTemplate>
 
         <DataTemplate x:Key="ScatterViewImage">
