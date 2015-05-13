@@ -230,15 +230,14 @@ namespace Drag_and_Drop
 
         private void Scatter_Drop(object sender, SurfaceDragDropEventArgs e)
         {
+            PhotoData photo=(PhotoData)e.Cursor.Data;
+            PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption);
             // If it isn't already on the ScatterView, add it to the source collection.
-            if (!ScatterItems.Contains(e.Cursor.Data))
-            {
-                ScatterItems.Add((PhotoData)e.Cursor.Data);
-            }
+            ScatterItems.Add(clonedPhoto);
 
             // Get the ScatterViewItem that Scatter automatically generated.
             ScatterViewItem svi =
-                scatter.ItemContainerGenerator.ContainerFromItem(e.Cursor.Data) as ScatterViewItem;
+                scatter.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
             svi.Visibility = System.Windows.Visibility.Visible;
             svi.Width = e.Cursor.Visual.ActualWidth;
             svi.Height = e.Cursor.Visual.ActualHeight;
@@ -305,24 +304,24 @@ namespace Drag_and_Drop
             e.Handled = true;
 
             // Gray out the SurfaceListBoxItem for now. We will remove it if the DragDrop is successful.
-            draggedElement.Opacity = 0.5;
+           // draggedElement.Opacity = 0.5;
         }
 
         private void ListBox_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData data = e.Cursor.Data as PhotoData;
             SurfaceListBoxItem boxItem = ListBox.ItemContainerGenerator.ContainerFromItem(data) as SurfaceListBoxItem;
-            if (boxItem != null)
+           /* if (boxItem != null)
             {
                 boxItem.Opacity = 1.0;
-            }
+            }*/
         }
 
         private void ListBox_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
         {
             if (e.Cursor.CurrentTarget != ListBox && e.Cursor.Effects == DragDropEffects.Move)
             {
-                LibraryItems.Remove(e.Cursor.Data as PhotoData);
+               // LibraryItems.Remove(e.Cursor.Data as PhotoData);
                 e.Handled = true;
             }
         }
