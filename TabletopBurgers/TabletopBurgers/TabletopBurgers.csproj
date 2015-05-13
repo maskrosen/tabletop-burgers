@@ -110,6 +110,7 @@
     </Content>
     <Content Include="SurfaceApplication1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Resource Include="Tulips.jpg" />
   </ItemGroup>

@@ -131,15 +131,15 @@ namespace Drag_and_Drop
             base.OnInitialized(e);
             DataContext = this;
 
-            LibraryItems.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread"));
-            LibraryItems.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread"));
-            LibraryItems.Add(new PhotoData("Images/CucumberTS.png", "Cucumber"));
-            LibraryItems.Add(new PhotoData("Images/DobleCheeseTS.png", "Cheese"));
-            LibraryItems.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat"));
-            LibraryItems.Add(new PhotoData("Images/KetchupTS.jpg", "Ketchup"));
-            LibraryItems.Add(new PhotoData("Images/LattuesTS.png", "Lettuce"));
-            LibraryItems.Add(new PhotoData("Images/MeetTS.png", "Meat 2"));
-            LibraryItems.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato"));
+            LibraryItems.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread", 10));
+            LibraryItems.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread", 10));
+            LibraryItems.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
+            LibraryItems.Add(new PhotoData("Images/DobleCheeseTS.png", "Cheese", 7));
+            LibraryItems.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
+            LibraryItems.Add(new PhotoData("Images/KetchupTS.jpg", "Ketchup", 1));
+            LibraryItems.Add(new PhotoData("Images/LattuesTS.png", "Lettuce", 2));
+            LibraryItems.Add(new PhotoData("Images/MeetTS.png", "Meat 2", 30));
+            LibraryItems.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
 
             TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
             TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));
@@ -297,7 +297,7 @@ namespace Drag_and_Drop
         private void Scatter_Drop(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData photo=(PhotoData)e.Cursor.Data;
-            PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption);
+            PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption, photo.Price);
             // If it isn't already on the ScatterView, add it to the source collection.
            
              ScatterViewItem svi;
