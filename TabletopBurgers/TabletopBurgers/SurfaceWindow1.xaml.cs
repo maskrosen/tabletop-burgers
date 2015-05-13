@@ -234,7 +234,7 @@ namespace Drag_and_Drop
         private void Scatter_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData data = e.Cursor.Data as PhotoData;
-            ScatterViewItem svi = scatter.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+            ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
             if (svi != null)
             {
                 svi.Visibility = Visibility.Visible;
@@ -243,7 +243,7 @@ namespace Drag_and_Drop
 
         private void Scatter_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
         {
-            if (e.Cursor.CurrentTarget != scatter && e.Cursor.Effects == DragDropEffects.Move)
+            if (e.Cursor.CurrentTarget != scatterBottom && e.Cursor.Effects == DragDropEffects.Move)
             {
                 ScatterItems.Remove(e.Cursor.Data as PhotoData);
                 e.Handled = true;
@@ -259,12 +259,12 @@ namespace Drag_and_Drop
 
             // Get the ScatterViewItem that Scatter automatically generated.
             ScatterViewItem svi =
-                scatter.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
             svi.Visibility = System.Windows.Visibility.Visible;
             svi.Width = e.Cursor.Visual.ActualWidth;
             svi.Height = e.Cursor.Visual.ActualHeight;
-            svi.Center = e.Cursor.GetPosition(scatter);
-            svi.Orientation = e.Cursor.GetOrientation(scatter);
+            svi.Center = e.Cursor.GetPosition(scatterBottom);
+            svi.Orientation = e.Cursor.GetOrientation(scatterBottom);
             svi.Background = Brushes.Transparent;
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;

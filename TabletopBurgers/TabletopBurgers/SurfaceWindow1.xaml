@@ -25,21 +25,30 @@
         </Style>
     </s:SurfaceWindow.Resources>
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.6*" />
+            <RowDefinition Height="0.4*" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.6*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width=".4*" />
             <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width=".4*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
  
         <s:SurfaceListBox 
             Grid.Row="0"
-            Grid.ColumnSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="7"
             x:Name="ListBox"
             VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItems}"
@@ -60,8 +69,9 @@
         </s:SurfaceListBox>
         
         <s:SurfaceListBox 
-            Grid.Row="2"
-            Grid.ColumnSpan="3"
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="7"
             x:Name="ListBoxDown"
             VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItems}"
@@ -85,7 +95,7 @@
         <s:SurfaceListBox 
             Grid.Column="0"
             Grid.Row="1"
-            Grid.RowSpan="1"
+            Grid.RowSpan="5"
             x:Name="ListBoxLeft"
             HorizontalAlignment="Center"
             ItemsSource="{Binding Path=LibraryItems}"
@@ -107,9 +117,9 @@
 
 
         <s:SurfaceListBox 
-            Grid.Column="2"
+            Grid.Column="6"
             Grid.Row="1"
-            Grid.RowSpan="1"
+            Grid.RowSpan="5"
             x:Name="ListBoxRight"
             HorizontalAlignment="Center"
             ItemsSource="{Binding Path=LibraryItems}"
@@ -130,10 +140,55 @@
         </s:SurfaceListBox>
 
         <s:ScatterView 
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="1"
-            Grid.RowSpan="1"
-            x:Name="scatter"
+            Grid.RowSpan="3"
+            x:Name="scatterLeft"
+            Background="LightYellow"
+            AllowDrop="True"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemsSource="{Binding ScatterItems}"
+            PreviewTouchDown="Scatter_PreviewTouchDown"
+            s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
+            s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
+            s:SurfaceDragDrop.Drop="Scatter_Drop">
+        </s:ScatterView>
+        
+        <s:ScatterView 
+            Grid.Row="2"
+            Grid.Column="5"
+            Grid.RowSpan="3"
+            x:Name="scatterRight"
+            Background="LightGreen"
+            AllowDrop="True"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemsSource="{Binding ScatterItems}"
+            PreviewTouchDown="Scatter_PreviewTouchDown"
+            s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
+            s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
+            s:SurfaceDragDrop.Drop="Scatter_Drop">
+        </s:ScatterView>
+
+        <s:ScatterView 
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            x:Name="scatterTop"
+            Background="Blue"
+            AllowDrop="True"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemsSource="{Binding ScatterItems}"
+            PreviewTouchDown="Scatter_PreviewTouchDown"
+            s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
+            s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
+            s:SurfaceDragDrop.Drop="Scatter_Drop">
+        </s:ScatterView>
+
+        <s:ScatterView 
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            x:Name="scatterBottom"
             Background="LightBlue"
             AllowDrop="True"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
@@ -143,6 +198,6 @@
             s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
             s:SurfaceDragDrop.Drop="Scatter_Drop">
         </s:ScatterView>
-         
+
     </Grid>
 </s:SurfaceWindow>
