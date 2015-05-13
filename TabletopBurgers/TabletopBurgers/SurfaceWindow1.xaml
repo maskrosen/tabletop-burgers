@@ -7,7 +7,7 @@
     
     <s:SurfaceWindow.Resources>
         <DataTemplate x:Key="ImageOnlyTemplate">
-            <Image Source="{Binding Source}" MaxWidth="250" />
+            <Image Source="{Binding Source}"  MaxWidth="30" />
         </DataTemplate>
         
         <DataTemplate x:Key="ImageAndCaptionTemplate">
@@ -32,16 +32,16 @@
         </Style>
     </s:SurfaceWindow.Resources>
 
-    <Grid>
+    <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.3*" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
         <!--<s:LibraryContainer 
@@ -79,7 +79,7 @@
             x:Name="ListBox"
             VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageAndCaptionTemplate}"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -101,7 +101,7 @@
             x:Name="ListBoxDown"
             VerticalAlignment="Bottom"
             ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageAndCaptionTemplate}"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -125,7 +125,7 @@
             x:Name="ListBoxLeft"
             HorizontalAlignment="Left"
             ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageAndCaptionTemplate}"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -149,7 +149,7 @@
             x:Name="ListBoxRight"
             HorizontalAlignment="Right"
             ItemsSource="{Binding Path=LibraryItems}"
-            ItemTemplate="{StaticResource ImageAndCaptionTemplate}"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -172,7 +172,7 @@
             x:Name="scatter"
             Background="LightBlue"
             AllowDrop="True"
-            ItemTemplate="{StaticResource ImageAndCaptionTemplate}"
+            ItemTemplate="{StaticResource ImageOnlyTemplate}"
             ItemsSource="{Binding ScatterItems}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
