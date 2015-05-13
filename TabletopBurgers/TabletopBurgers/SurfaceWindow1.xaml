@@ -27,6 +27,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="HamburgerCursorStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="ContentTemplate" Value="{StaticResource BurgerImage}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}">
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </s:SurfaceWindow.Resources>
 
     <Grid>
@@ -150,7 +163,7 @@
             x:Name="scatterLeft"
             Background="LightYellow"
             AllowDrop="True"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemTemplate="{StaticResource BurgerImage}"
             ItemsSource="{Binding ScatterItemsLeft}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -165,7 +178,7 @@
             x:Name="scatterRight"
             Background="LightGreen"
             AllowDrop="True"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemTemplate="{StaticResource BurgerImage}"
             ItemsSource="{Binding ScatterItemsRight}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -180,7 +193,7 @@
             x:Name="scatterTop"
             Background="Blue"
             AllowDrop="True"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemTemplate="{StaticResource BurgerImage}"
             ItemsSource="{Binding ScatterItemsTop}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"
@@ -195,7 +208,7 @@
             x:Name="scatterBottom"
             Background="LightBlue"
             AllowDrop="True"
-            ItemTemplate="{StaticResource ImageOnlyTemplate}"
+            ItemTemplate="{StaticResource BurgerImage}"
             ItemsSource="{Binding ScatterItemsBottom}"
             PreviewTouchDown="Scatter_PreviewTouchDown"
             s:SurfaceDragDrop.DragCanceled="Scatter_DragCanceled"

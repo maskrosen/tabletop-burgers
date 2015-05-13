@@ -26,17 +26,13 @@ namespace Drag_and_Drop
     {
         #region Collections
         private ObservableCollection<PhotoData> libraryItems;
-<<<<<<< HEAD
-        private ObservableCollection<PhotoData> scatterItems;
 
         private ObservableCollection<PhotoData> burgerItems;
-=======
         private ObservableCollection<PhotoData> scatterItemsTop;
         private ObservableCollection<PhotoData> scatterItemsBottom;
         private ObservableCollection<PhotoData> scatterItemsRight;
         private ObservableCollection<PhotoData> scatterItemsLeft;
 
->>>>>>> origin/master
         private Dictionary<int, Tag> tagItems;
 
         public ObservableCollection<PhotoData> LibraryItems
@@ -468,7 +464,7 @@ namespace Drag_and_Drop
             ContentControl cursorVisual = new ContentControl()
             {
                 Content = draggedElement.DataContext,
-                Style = FindResource("CursorStyle") as Style
+                Style = FindResource("HamburgerCursorStyle") as Style
             };
 
             // Create a list of input devices. Add the touches that
