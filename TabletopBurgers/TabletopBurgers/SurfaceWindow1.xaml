@@ -46,9 +46,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
             <ColumnDefinition Width="1.5*" />
-            <ColumnDefinition Width=".4*" />
+            <ColumnDefinition Width=".6*" />
             <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width=".4*" />
+            <ColumnDefinition Width=".6*" />
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
             Grid.ColumnSpan="7"
             x:Name="ListBox"
             VerticalAlignment="Top"
-            ItemsSource="{Binding Path=LibraryItems}"
+            ItemsSource="{Binding Path=LibraryItemsTop}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -82,7 +82,7 @@
             Grid.ColumnSpan="7"
             x:Name="ListBoxDown"
             VerticalAlignment="Top"
-            ItemsSource="{Binding Path=LibraryItems}"
+            ItemsSource="{Binding Path=LibraryItemsBottom}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -106,7 +106,7 @@
             Grid.RowSpan="5"
             x:Name="ListBoxLeft"
             HorizontalAlignment="Center"
-            ItemsSource="{Binding Path=LibraryItems}"
+            ItemsSource="{Binding Path=LibraryItemsLeft}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -130,7 +130,7 @@
             Grid.RowSpan="5"
             x:Name="ListBoxRight"
             HorizontalAlignment="Center"
-            ItemsSource="{Binding Path=LibraryItems}"
+            ItemsSource="{Binding Path=LibraryItemsRight}"
             ItemTemplate="{StaticResource ImageOnlyTemplate}"
             AllowDrop="True"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
