@@ -105,6 +105,11 @@
     <Resource Include="Images\MeetTS.png" />
     <Resource Include="Images\TomatoSliceTS.png" />
     <Resource Include="Images\TopBreadTS.png" />
+    <Resource Include="Images\Burger1TS.png" />
+    <Resource Include="Images\Burger2TS.png" />
+    <Resource Include="Images\Burger3.png" />
+    <Resource Include="Images\Burger4.png" />
+    <Resource Include="Images\FinalBurgerTS.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

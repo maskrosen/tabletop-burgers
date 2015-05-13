@@ -9,7 +9,11 @@
         <DataTemplate x:Key="ImageOnlyTemplate">
             <Image Source="{Binding Source}"  MaxWidth="40" MaxHeight="40" ToolTip="{Binding Caption}"/>
         </DataTemplate>
-        
+
+        <DataTemplate x:Key="BurgerImage">
+            <Image Source="{Binding Source}"  MaxWidth="110" MaxHeight="110" ToolTip="{Binding Caption}"/>
+        </DataTemplate>
+
         <Style x:Key="CursorStyle" TargetType="{x:Type ContentControl}">
             <Setter Property="ContentTemplate" Value="{StaticResource ImageOnlyTemplate}" />
             <Setter Property="Template">
@@ -198,6 +202,28 @@
             s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
             s:SurfaceDragDrop.Drop="Scatter_Drop">
         </s:ScatterView>
+
+        <!-- Middle popular-burgers area-->
+        <s:SurfaceListBox 
+            Grid.Row="3"
+            Grid.Column="3"
+            x:Name="BurgerArea"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding Path=BurgerItems}"
+            ItemTemplate="{StaticResource BurgerImage}"
+            AllowDrop="True"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+            PreviewTouchDown="Burger_PreviewTouchDown"
+            s:SurfaceDragDrop.DragCanceled="ListBox_DragCanceled"
+            s:SurfaceDragDrop.DragCompleted="ListBox_DragCompleted"
+            s:SurfaceDragDrop.Drop="ListBox_Drop">
+            <s:SurfaceListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </s:SurfaceListBox.ItemsPanel>
+        </s:SurfaceListBox>
 
     </Grid>
 </s:SurfaceWindow>

@@ -27,6 +27,8 @@ namespace Drag_and_Drop
         #region Collections
         private ObservableCollection<PhotoData> libraryItems;
         private ObservableCollection<PhotoData> scatterItems;
+
+        private ObservableCollection<PhotoData> burgerItems;
         private Dictionary<int, Tag> tagItems;
 
         public ObservableCollection<PhotoData> LibraryItems
@@ -52,6 +54,19 @@ namespace Drag_and_Drop
                 }
 
                 return scatterItems;
+            }
+        }
+
+        public ObservableCollection<PhotoData> BurgerItems
+        {
+            get
+            {
+                if (burgerItems == null)
+                {
+                    burgerItems = new ObservableCollection<PhotoData>();
+                }
+
+                return burgerItems;
             }
         }
 
@@ -104,6 +119,12 @@ namespace Drag_and_Drop
             TagItems.Add(4, new Tag(4, 341, "Oslo", new DateTime(2015, 5, 20, 11, 20, 0), 15, true, 3));
             TagItems.Add(5, new Tag(5, 501, "Malmö", new DateTime(2015, 5, 20, 11, 22, 0), -1, false, -1));
             TagItems.Add(6, new Tag(6, 2453, "Jönköping", new DateTime(2015, 5, 20, 12, 03, 0), 12, true, 10));
+
+            BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
+            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
         }
 
         /// <summary>
@@ -345,5 +366,63 @@ namespace Drag_and_Drop
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;
         }
+
+
+        private void Burger_PreviewTouchDown(object sender, TouchEventArgs e)
+        {
+            FrameworkElement findSource = e.OriginalSource as FrameworkElement;
+            SurfaceListBoxItem draggedElement = null;
+
+            // Find the SurfaceListBoxItem object that is being touched.
+            while (draggedElement == null && findSource != null)
+            {
+                if ((draggedElement = findSource as SurfaceListBoxItem) == null)
+                {
+                    findSource = VisualTreeHelper.GetParent(findSource) as FrameworkElement;
+                }
+            }
+
+            if (draggedElement == null)
+            {
+                return;
+            }
+
+            PhotoData data = draggedElement.Content as PhotoData;
+
+            // Create the cursor visual
+            ContentControl cursorVisual = new ContentControl()
+            {
+                Content = draggedElement.DataContext,
+                Style = FindResource("CursorStyle") as Style
+            };
+
+            // Create a list of input devices. Add the touches that
+            // are currently captured within the dragged element and
+            // the current touch (if it isn't already in the list).
+            List<InputDevice> devices = new List<InputDevice>();
+            devices.Add(e.TouchDevice);
+            foreach (TouchDevice touch in draggedElement.TouchesCapturedWithin)
+            {
+                if (touch != e.TouchDevice)
+                {
+                    devices.Add(touch);
+                }
+            }
+
+            // Get the drag source object
+            ItemsControl dragSource = ItemsControl.ItemsControlFromItemContainer(draggedElement);
+
+            SurfaceDragDrop.BeginDragDrop(
+                dragSource,
+                draggedElement,
+                cursorVisual,
+                draggedElement.DataContext,
+                devices,
+                DragDropEffects.Move);
+
+            // Prevents the default touch behavior from happening and disrupting our code.
+            e.Handled = true;
+        }
+
     }
 }
