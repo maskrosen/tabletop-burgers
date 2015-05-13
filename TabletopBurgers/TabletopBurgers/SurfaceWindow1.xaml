@@ -7,14 +7,7 @@
     
     <s:SurfaceWindow.Resources>
         <DataTemplate x:Key="ImageOnlyTemplate">
-            <Image Source="{Binding Source}"  MaxWidth="30" />
-        </DataTemplate>
-        
-        <DataTemplate x:Key="ImageAndCaptionTemplate">
-            <StackPanel>
-                <Image Source="{Binding Source}" MaxWidth="250" Stretch="Uniform" />
-                <TextBlock Text="{Binding Caption}" MaxWidth="250" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" />
-            </StackPanel>
+            <Image Source="{Binding Source}"  MaxWidth="30" ToolTip="{Binding Caption}"/>
         </DataTemplate>
         
         <Style x:Key="CursorStyle" TargetType="{x:Type ContentControl}">
