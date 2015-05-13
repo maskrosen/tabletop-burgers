@@ -25,7 +25,11 @@ namespace Drag_and_Drop
     public partial class SurfaceWindow1 : SurfaceWindow
     {
         #region Collections
-        private ObservableCollection<PhotoData> libraryItems;
+        private ObservableCollection<PhotoData> libraryItemsTop;
+        private ObservableCollection<PhotoData> libraryItemsBottom;
+        private ObservableCollection<PhotoData> libraryItemsLeft;
+        private ObservableCollection<PhotoData> libraryItemsRight;
+
 
         private ObservableCollection<PhotoData> burgerItems;
         private ObservableCollection<PhotoData> scatterItemsTop;
@@ -35,16 +39,54 @@ namespace Drag_and_Drop
 
         private Dictionary<int, Tag> tagItems;
 
-        public ObservableCollection<PhotoData> LibraryItems
+        public ObservableCollection<PhotoData> LibraryItemsTop
         {
             get
             {
-                if (libraryItems == null)
+                if (libraryItemsTop == null)
                 {
-                    libraryItems = new ObservableCollection<PhotoData>();
+                    libraryItemsTop = new ObservableCollection<PhotoData>();
                 }
 
-                return libraryItems;
+                return libraryItemsTop;
+            }
+        }
+        public ObservableCollection<PhotoData> LibraryItemsBottom
+        {
+            get
+            {
+                if (libraryItemsBottom == null)
+                {
+                    libraryItemsBottom = new ObservableCollection<PhotoData>();
+                }
+
+                return libraryItemsBottom;
+            }
+        }
+
+        public ObservableCollection<PhotoData> LibraryItemsLeft
+        {
+            get
+            {
+                if (libraryItemsLeft == null)
+                {
+                    libraryItemsLeft = new ObservableCollection<PhotoData>();
+                }
+
+                return libraryItemsLeft;
+            }
+        }
+
+        public ObservableCollection<PhotoData> LibraryItemsRight
+        {
+            get
+            {
+                if (libraryItemsRight == null)
+                {
+                    libraryItemsRight = new ObservableCollection<PhotoData>();
+                }
+
+                return libraryItemsRight;
             }
         }
 
@@ -100,6 +142,7 @@ namespace Drag_and_Drop
             }
         }
 
+      
         public ObservableCollection<PhotoData> BurgerItems
         {
             get
@@ -146,15 +189,27 @@ namespace Drag_and_Drop
             base.OnInitialized(e);
             DataContext = this;
 
-            LibraryItems.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread", 10));
-            LibraryItems.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread", 10));
-            LibraryItems.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
-            LibraryItems.Add(new PhotoData("Images/DobleCheeseTS.png", "Cheese", 7));
-            LibraryItems.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
-            LibraryItems.Add(new PhotoData("Images/KetchupTS.jpg", "Ketchup", 1));
-            LibraryItems.Add(new PhotoData("Images/LattuesTS.png", "Lettuce", 2));
-            LibraryItems.Add(new PhotoData("Images/MeetTS.png", "Meat 2", 30));
-            LibraryItems.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
+            LibraryItemsTop.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread", 10));
+            LibraryItemsTop.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread", 10));
+            LibraryItemsTop.Add(new PhotoData("Images/BrawnBreadTS.png", "Bottom Bread", 10));
+            LibraryItemsTop.Add(new PhotoData("Images/BrawonBreadTS.png", "Top Bread", 10));
+
+
+            LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
+            LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
+            LibraryItemsBottom.Add(new PhotoData("Images/LuttesTS.png", "Lettuce", 2));
+            LibraryItemsBottom.Add(new PhotoData("Images/OnionTS.png", "Onions", 3));
+
+
+            LibraryItemsLeft.Add(new PhotoData("Images/DobleCheeseTS.png", "Double Cheese", 7));
+            LibraryItemsLeft.Add(new PhotoData("Images/CHesseTS.png", "Cheese", 7));
+            LibraryItemsLeft.Add(new PhotoData("Images/Ketchup.png", "Ketchup", 1));
+
+
+            LibraryItemsRight.Add(new PhotoData("Images/MeetTS.png", "Meat 2", 30));
+            LibraryItemsRight.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
+            LibraryItemsRight.Add(new PhotoData("Images/EggTS.png", "Egg    ", 10));
+            LibraryItemsRight.Add(new PhotoData("Images/BaconTS.png", "Bacon    ", 10));
 
             TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
             TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));

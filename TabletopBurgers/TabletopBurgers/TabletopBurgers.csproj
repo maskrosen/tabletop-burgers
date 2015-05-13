@@ -100,8 +100,6 @@
     <Resource Include="Images\CucumberTS.png" />
     <Resource Include="Images\DobleCheeseTS.png" />
     <Resource Include="Images\DoubleMeetTS.png" />
-    <Resource Include="Images\KetchupTS.jpg" />
-    <Resource Include="Images\LattuesTS.png" />
     <Resource Include="Images\MeetTS.png" />
     <Resource Include="Images\TomatoSliceTS.png" />
     <Resource Include="Images\TopBreadTS.png" />
@@ -110,6 +108,19 @@
     <Resource Include="Images\Burger3.png" />
     <Resource Include="Images\Burger4.png" />
     <Resource Include="Images\FinalBurgerTS.png" />
+    <Resource Include="Images\BaconTS.png" />
+    <Resource Include="Images\BrawnBreadTS.png" />
+    <Resource Include="Images\BrawonBreadTS.png" />
+    <Resource Include="Images\BuildBurgerTS.png" />
+    <Resource Include="Images\CHesseTS.png" />
+    <Resource Include="Images\FantaTS.png" />
+    <Resource Include="Images\EggTS.png" />
+    <Resource Include="Images\Ketchup.png" />
+    <Resource Include="Images\LuttesTS.png" />
+    <Resource Include="Images\OnionTS.png" />
+    <Resource Include="Images\OrangeTS.png" />
+    <Resource Include="Images\PEPSITS.png" />
+    <Resource Include="Images\SpriteTS.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
