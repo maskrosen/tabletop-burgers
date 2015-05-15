@@ -732,6 +732,24 @@ namespace Drag_and_Drop
 
              ScatterViewItem svi2 = scatterBottom.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
              svi2.Orientation = 0;
+
+             svi1.Background = Brushes.Transparent;
+             svi2.Background = Brushes.Transparent;
+
+             RoutedEventHandler loadedEventHandler = null;
+             loadedEventHandler = new RoutedEventHandler(delegate
+             {
+                 svi1.Loaded -= loadedEventHandler;
+                 svi2.Loaded -= loadedEventHandler;
+                 Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                 ssc = svi1.Template.FindName("shadow", svi1) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                 ssc.Visibility = Visibility.Hidden;
+                 Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc2;
+                 ssc2 = svi2.Template.FindName("shadow", svi2) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                 ssc2.Visibility = Visibility.Hidden;
+             });
+             svi1.Loaded += loadedEventHandler;
+             svi2.Loaded += loadedEventHandler;
         }
 
         void MakeMenu_TouchDown_up(object sender, TouchEventArgs e)
@@ -750,6 +768,24 @@ namespace Drag_and_Drop
 
             ScatterViewItem svi2 = scatterTop.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
             svi2.Orientation = 180;
+
+            svi1.Background = Brushes.Transparent;
+            svi2.Background = Brushes.Transparent;
+
+            RoutedEventHandler loadedEventHandler = null;
+            loadedEventHandler = new RoutedEventHandler(delegate
+            {
+                svi1.Loaded -= loadedEventHandler;
+                svi2.Loaded -= loadedEventHandler;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                ssc = svi1.Template.FindName("shadow", svi1) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc.Visibility = Visibility.Hidden;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc2;
+                ssc2 = svi2.Template.FindName("shadow", svi2) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc2.Visibility = Visibility.Hidden;
+            });
+            svi1.Loaded += loadedEventHandler;
+            svi2.Loaded += loadedEventHandler;
         }
 
         void MakeMenu_TouchDown_left(object sender, TouchEventArgs e)
@@ -768,6 +804,24 @@ namespace Drag_and_Drop
 
             ScatterViewItem svi2 = scatterLeft.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
             svi2.Orientation = 90;
+
+            svi1.Background = Brushes.Transparent;
+            svi2.Background = Brushes.Transparent;
+
+            RoutedEventHandler loadedEventHandler = null;
+            loadedEventHandler = new RoutedEventHandler(delegate
+            {
+                svi1.Loaded -= loadedEventHandler;
+                svi2.Loaded -= loadedEventHandler;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                ssc = svi1.Template.FindName("shadow", svi1) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc.Visibility = Visibility.Hidden;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc2;
+                ssc2 = svi2.Template.FindName("shadow", svi2) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc2.Visibility = Visibility.Hidden;
+            });
+            svi1.Loaded += loadedEventHandler;
+            svi2.Loaded += loadedEventHandler;
         }
 
         void MakeMenu_TouchDown_right(object sender, TouchEventArgs e)
@@ -786,6 +840,24 @@ namespace Drag_and_Drop
 
             ScatterViewItem svi2 = scatterRight.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
             svi2.Orientation = 270;
+
+            svi1.Background = Brushes.Transparent;
+            svi2.Background = Brushes.Transparent;
+
+            RoutedEventHandler loadedEventHandler = null;
+            loadedEventHandler = new RoutedEventHandler(delegate
+            {
+                svi1.Loaded -= loadedEventHandler;
+                svi2.Loaded -= loadedEventHandler;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                ssc = svi1.Template.FindName("shadow", svi1) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc.Visibility = Visibility.Hidden;
+                Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc2;
+                ssc2 = svi2.Template.FindName("shadow", svi2) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                ssc2.Visibility = Visibility.Hidden;
+            });
+            svi1.Loaded += loadedEventHandler;
+            svi2.Loaded += loadedEventHandler;
         }
 
     }
