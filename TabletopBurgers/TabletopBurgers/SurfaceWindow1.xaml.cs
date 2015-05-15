@@ -16,6 +16,7 @@ using Microsoft.Surface.Presentation;
 using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation.Input;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Drag_and_Drop
 {
@@ -182,6 +183,11 @@ namespace Drag_and_Drop
 
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
+
+            Place_tag_right.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_right);
+            Place_tag_left.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_left);
+            Place_tag_up.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_up);
+            Place_tag_down.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_down);
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -508,6 +514,70 @@ namespace Drag_and_Drop
         {
             // Setting e.Handle to true ensures that default behavior is not performed.
             e.Handled = true;
+        }
+
+        void SurfaceWindow1_TouchDown_left(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+            //by default it is a blob
+            string type = "";
+            //try to find the type of item on the Surface 
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
+                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                scatterLeft.Visibility = Visibility.Visible;
+                Place_tag_left.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        void SurfaceWindow1_TouchDown_down(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+            //by default it is a blob
+            string type = "";
+            //try to find the type of item on the Surface 
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
+                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                scatterBottom.Visibility = Visibility.Visible;
+                Place_tag_down.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        void SurfaceWindow1_TouchDown_up(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+            //by default it is a blob
+            string type = "";
+            //try to find the type of item on the Surface 
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
+                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                scatterTop.Visibility = Visibility.Visible;
+                Place_tag_up.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        void SurfaceWindow1_TouchDown_right(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+            //by default it is a blob
+            string type = "";
+            //try to find the type of item on the Surface 
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
+                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                scatterRight.Visibility = Visibility.Visible;
+                Place_tag_right.Visibility = Visibility.Collapsed;
+            }
         }
 
     }

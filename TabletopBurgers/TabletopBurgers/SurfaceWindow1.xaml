@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:s="http://schemas.microsoft.com/surface/2008"
     Title="Tabletop Burgers"
+    Icon="Images/Burger1TS.png"
     >
     
     <s:SurfaceWindow.Resources>
@@ -46,9 +47,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ImageBrush x:Key="WindowBackground2" ImageSource="Resources\BlueGrain.jpg"/>
     </s:SurfaceWindow.Resources>
 
-    <Grid>
+    <Grid Background="{StaticResource WindowBackground2}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*" />
             <RowDefinition Height="0.4*" />
@@ -67,7 +69,12 @@
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
- 
+
+        <Label x:Name="InfoLabel"
+               Grid.Row="1"
+               Grid.Column="1"
+               Foreground="White" />
+
         <s:SurfaceListBox 
             Grid.Row="0"
             Grid.Column="0"
@@ -167,7 +174,8 @@
             Grid.Column="1"
             Grid.RowSpan="3"
             x:Name="scatterLeft"
-            Background="LightYellow"
+            Background="DarkGray"
+            Visibility="Collapsed"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsLeft}"
@@ -176,13 +184,14 @@
             s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
             s:SurfaceDragDrop.Drop="Scatter_Drop">
         </s:ScatterView>
-        
+
         <s:ScatterView 
             Grid.Row="2"
             Grid.Column="5"
             Grid.RowSpan="3"
             x:Name="scatterRight"
-            Background="LightGreen"
+            Background="DarkGray"
+            Visibility="Collapsed"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsRight}"
@@ -197,7 +206,8 @@
             Grid.Column="3"
             Grid.RowSpan="2"
             x:Name="scatterTop"
-            Background="Blue"
+            Background="DarkGray"
+            Visibility="Collapsed"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsTop}"
@@ -212,7 +222,8 @@
             Grid.Column="3"
             Grid.RowSpan="2"
             x:Name="scatterBottom"
-            Background="LightBlue"
+            Background="DarkGray"
+            Visibility="Collapsed"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsBottom}"
@@ -221,8 +232,14 @@
             s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
             s:SurfaceDragDrop.Drop="Scatter_Drop">
         </s:ScatterView>
+        
+        <!-- "Place your tag here" images-->
+        <Image Source="Images/place_your_tag_here_right.png" Name="Place_tag_right" Grid.Column="5" Grid.Row="3"  ToolTip="Place your tag here"/>
+        <Image Source="Images/place_your_tag_here_up.png" Name="Place_tag_up" Grid.Column="3" Grid.Row="2"  ToolTip="Place your tag here"/>
+        <Image Source="Images/place_your_tag_here_left.png" Name="Place_tag_left" Grid.Column="1" Grid.Row="3"  ToolTip="Place your tag here"/>
+        <Image Source="Images/place_your_tag_here_down.png" Name="Place_tag_down" Grid.Column="3" Grid.Row="4"  ToolTip="Place your tag here"/>
 
-        <!-- Middle popular-burgers area-->
+            <!-- Middle popular-burgers area-->
         <s:SurfaceListBox 
             Grid.Row="3"
             Grid.Column="3"
