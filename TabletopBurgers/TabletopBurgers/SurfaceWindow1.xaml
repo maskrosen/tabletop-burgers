@@ -6,6 +6,7 @@
     Icon="Images/Burger1TS.png"
     >
     
+    <!--- Resources -->
     <s:SurfaceWindow.Resources>
         <Storyboard x:Key="imageRotationStoryboard" Storyboard.TargetName="CenterImage" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
             <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:5" RepeatBehavior="Forever" />
@@ -50,6 +51,7 @@
         <ImageBrush x:Key="WindowBackground2" ImageSource="Resources\BlueGrain.jpg"/>
     </s:SurfaceWindow.Resources>
 
+    <!--- General grid -->
     <Grid Background="{StaticResource WindowBackground2}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*" />
@@ -70,11 +72,7 @@
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="InfoLabel"
-               Grid.Row="1"
-               Grid.Column="1"
-               Foreground="White" />
-
+        <!--- Items around the tabletop -->
         <s:SurfaceListBox 
             Grid.Row="0"
             Grid.Column="0"
@@ -121,7 +119,6 @@
             </s:SurfaceListBox.ItemsPanel>
         </s:SurfaceListBox>
 
-
         <s:SurfaceListBox 
             Grid.Column="0"
             Grid.Row="1"
@@ -144,7 +141,6 @@
                 </ItemsPanelTemplate>
             </s:SurfaceListBox.ItemsPanel>
         </s:SurfaceListBox>
-
 
         <s:SurfaceListBox 
             Grid.Column="6"
@@ -169,6 +165,7 @@
             </s:SurfaceListBox.ItemsPanel>
         </s:SurfaceListBox>
 
+        <!--- Scatterview personal tabs -->
         <s:ScatterView 
             Grid.Row="2"
             Grid.Column="1"
@@ -232,14 +229,96 @@
             s:SurfaceDragDrop.DragCompleted="Scatter_DragCompleted"
             s:SurfaceDragDrop.Drop="Scatter_Drop">
         </s:ScatterView>
-        
-        <!-- "Place your tag here" images-->
-        <Image Source="Images/place_your_tag_here_right.png" Name="Place_tag_right" Grid.Column="5" Grid.Row="3"  ToolTip="Place your tag here"/>
-        <Image Source="Images/place_your_tag_here_up.png" Name="Place_tag_up" Grid.Column="3" Grid.Row="2"  ToolTip="Place your tag here"/>
-        <Image Source="Images/place_your_tag_here_left.png" Name="Place_tag_left" Grid.Column="1" Grid.Row="3"  ToolTip="Place your tag here"/>
-        <Image Source="Images/place_your_tag_here_down.png" Name="Place_tag_down" Grid.Column="3" Grid.Row="4"  ToolTip="Place your tag here"/>
 
-            <!-- Middle popular-burgers area-->
+        <!---"Order placed" texts -->
+        <TextBlock Name="Order_placed_right" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Foreground="DarkGray" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Order_placed_up" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30" Foreground="DarkGray" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Order_placed_down" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Foreground="DarkGray" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Order_placed_left" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Foreground="DarkGray" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <!-- "Place your tag here" images-->
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_right" Grid.Column="5" Grid.Row="3"  ToolTip="Place your tag here">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_up" Grid.Column="3" Grid.Row="2"  ToolTip="Place your tag here">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_left" Grid.Column="1" Grid.Row="3"  ToolTip="Place your tag here">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_down" Grid.Column="3" Grid.Row="4"  ToolTip="Place your tag here">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </Image.LayoutTransform>
+        </Image>
+
+        <!-- "Make menu" buttons-->
+        <Image Source="Images/make_menu.png" Name="Make_menu_right" Grid.Column="5" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/make_menu.png" Name="Make_menu_up" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/make_menu.png" Name="Make_menu_left" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </Image.LayoutTransform>
+        </Image>
+        <Image Source="Images/make_menu.png" Name="Make_menu_down" Grid.Column="3" Grid.Row="4"  Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
+            <Image.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </Image.LayoutTransform>
+        </Image>
+
+        <!--- Train info labels -->
+        <TextBlock Name="Train_label_right" Grid.Column="5" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Train_label_up" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Train_label_down" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Train_label_left" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <!-- Middle popular-burgers area-->
         <s:SurfaceListBox 
             Grid.Row="3"
             Grid.Column="3"

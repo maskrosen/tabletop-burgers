@@ -39,7 +39,6 @@ namespace Drag_and_Drop
         private ObservableCollection<PhotoData> scatterItemsLeft;
 
         private Dictionary<long, Tag> tagItems;
-        private Dictionary<String, long> tabTags;
 
         public ObservableCollection<PhotoData> LibraryItemsTop
         {
@@ -171,19 +170,6 @@ namespace Drag_and_Drop
             }
         }
 
-        public Dictionary<String, long> TabTags
-        {
-            get
-            {
-                if (tabTags == null)
-                {
-                    tabTags = new Dictionary<String, long>();
-                }
-
-                return tabTags;
-            }
-        }
-
         #endregion
 
         /// <summary>
@@ -205,10 +191,15 @@ namespace Drag_and_Drop
 
             //Need to test this in the actual tabletop
             //Comment for other computer-testing meanwhile
-            Place_tag_right.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_right);
+           /* Place_tag_right.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_right);
             Place_tag_left.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_left);
             Place_tag_up.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_up);
-            Place_tag_down.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);
+            Place_tag_down.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);*/
+
+            Make_menu_down.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_down);
+            Make_menu_up.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_up);
+            Make_menu_left.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_left);
+            Make_menu_right.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_right);
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -221,17 +212,14 @@ namespace Drag_and_Drop
             LibraryItemsTop.Add(new PhotoData("Images/BrawnBreadTS.png", "Bottom Bread", 10));
             LibraryItemsTop.Add(new PhotoData("Images/BrawonBreadTS.png", "Top Bread", 10));
 
-
             LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
             LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
             LibraryItemsBottom.Add(new PhotoData("Images/LuttesTS.png", "Lettuce", 2));
             LibraryItemsBottom.Add(new PhotoData("Images/OnionTS.png", "Onions", 3));
 
-
             LibraryItemsLeft.Add(new PhotoData("Images/DobleCheeseTS.png", "Double Cheese", 7));
             LibraryItemsLeft.Add(new PhotoData("Images/CHesseTS.png", "Cheese", 7));
             LibraryItemsLeft.Add(new PhotoData("Images/Ketchup.png", "Ketchup", 1));
-
 
             LibraryItemsRight.Add(new PhotoData("Images/MeetTS.png", "Meat 2", 30));
             LibraryItemsRight.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
@@ -255,6 +243,7 @@ namespace Drag_and_Drop
             BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
             BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
             BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
+
         }
 
         /// <summary>
@@ -385,19 +374,12 @@ namespace Drag_and_Drop
         private void Scatter_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData data = e.Cursor.Data as PhotoData;
-          /* ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
-            if (svi != null)
-            {
-                svi.Visibility = Visibility.Visible;
-            }*/
         }
 
         private void Scatter_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
         {
             if ((e.Cursor.CurrentTarget != scatterBottom || e.Cursor.CurrentTarget != scatterTop || e.Cursor.CurrentTarget != scatterRight || e.Cursor.CurrentTarget != scatterLeft) && e.Cursor.Effects == DragDropEffects.Move)
             {
-                //ScatterItemsTop.Remove(e.Cursor.Data as PhotoData);
-        
                 e.Handled = true;
             }
         }
@@ -406,8 +388,7 @@ namespace Drag_and_Drop
         {
             PhotoData photo=(PhotoData)e.Cursor.Data;
             PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption, photo.Price);
-            // If it isn't already on the ScatterView, add it to the source collection.
-           
+
              ScatterViewItem svi;
             if (e.Cursor.CurrentTarget == scatterBottom)
             {
@@ -543,10 +524,32 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Add("Left", c.GetTagData().Value);
-                scatterLeft.Visibility = Visibility.Visible;
+                long tagNumber = c.GetTagData().Value;
+
                 Place_tag_left.Visibility = Visibility.Collapsed;
-                //Label with the train info on top of the zone
+                Tag tag = TagItems[tagNumber];
+                if (tag.orderPlaced)
+                {
+                    Order_placed_left.Visibility = Visibility.Visible;
+                    String minute;
+                    if (tag.timeLeft == 1)
+                    {
+                        minute = " minute";
+                    }
+                    else
+                    {
+                        minute = " minutes";
+                    }
+                    Order_placed_left.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                }
+                else
+                {
+                    scatterLeft.Visibility = Visibility.Visible;
+                    Train_label_left.Visibility = Visibility.Visible;
+                    Train_label_left.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                    Make_menu_left.Visibility = Visibility.Visible;
+            
+                }
             }
         }
 
@@ -556,9 +559,31 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Add("Down", c.GetTagData().Value);
-                scatterBottom.Visibility = Visibility.Visible;
+                long tagNumber = c.GetTagData().Value;
+
                 Place_tag_down.Visibility = Visibility.Collapsed;
+                Tag tag = TagItems[tagNumber];
+                if (tag.orderPlaced)
+                {
+                    String minute;
+                    if (tag.timeLeft == 1)
+                    {
+                        minute = " minute";
+                    }
+                    else
+                    {
+                        minute = " minutes";
+                    }
+                    Order_placed_down.Visibility = Visibility.Visible;
+                    Order_placed_down.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                }
+                else
+                {
+                    scatterBottom.Visibility = Visibility.Visible;
+                    Train_label_down.Visibility = Visibility.Visible;
+                    Train_label_down.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                    Make_menu_down.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -568,9 +593,31 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Add("Up", c.GetTagData().Value);
-                scatterTop.Visibility = Visibility.Visible;
+                long tagNumber = c.GetTagData().Value;
+
                 Place_tag_up.Visibility = Visibility.Collapsed;
+                Tag tag = TagItems[tagNumber];
+                if (tag.orderPlaced)
+                {
+                    String minute;
+                    if (tag.timeLeft == 1)
+                    {
+                        minute = " minute";
+                    }
+                    else
+                    {
+                        minute = " minutes";
+                    }
+                    Order_placed_up.Visibility = Visibility.Visible;
+                    Order_placed_up.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                }
+                else
+                {
+                    scatterTop.Visibility = Visibility.Visible;
+                    Train_label_up.Visibility = Visibility.Visible;
+                    Train_label_up.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                    Make_menu_up.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -580,9 +627,31 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Add("Right", c.GetTagData().Value);
-                scatterRight.Visibility = Visibility.Visible;
+                long tagNumber = c.GetTagData().Value;
+                
                 Place_tag_right.Visibility = Visibility.Collapsed;
+                Tag tag = TagItems[tagNumber];
+                if (tag.orderPlaced)
+                {
+                    String minute;
+                    if (tag.timeLeft == 1)
+                    {
+                        minute = " minute";
+                    }
+                    else
+                    {
+                        minute = " minutes";
+                    }
+                    Order_placed_right.Visibility = Visibility.Visible;
+                    Order_placed_right.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in "+tag.timeLeft+ minute;
+                }
+                else
+                {
+                    scatterRight.Visibility = Visibility.Visible;
+                    Train_label_right.Visibility = Visibility.Visible;
+                    Train_label_right.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                    Make_menu_right.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -592,9 +661,10 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Remove("Right");
                 scatterRight.Visibility = Visibility.Collapsed;
                 Place_tag_right.Visibility = Visibility.Visible;
+                Train_label_right.Visibility = Visibility.Hidden;
+                Make_menu_right.Visibility = Visibility.Hidden;
             }
         }
 
@@ -604,9 +674,10 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Remove("Left");
                 scatterLeft.Visibility = Visibility.Collapsed;
                 Place_tag_left.Visibility = Visibility.Visible;
+                Train_label_left.Visibility = Visibility.Hidden;
+                Make_menu_left.Visibility = Visibility.Hidden;
             }
         }
 
@@ -616,9 +687,10 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Remove("Up");
                 scatterTop.Visibility = Visibility.Collapsed;
                 Place_tag_up.Visibility = Visibility.Visible;
+                Train_label_up.Visibility = Visibility.Hidden;
+                Make_menu_up.Visibility = Visibility.Hidden;
             }
         }
 
@@ -628,10 +700,83 @@ namespace Drag_and_Drop
 
             if (c.GetIsTagRecognized() == true)
             {
-                TabTags.Remove("Down");
                 scatterBottom.Visibility = Visibility.Collapsed;
                 Place_tag_down.Visibility = Visibility.Visible;
+                Train_label_down.Visibility = Visibility.Hidden;
+                Make_menu_down.Visibility = Visibility.Hidden;
             }
+        }
+
+        void MakeMenu_TouchDown_down(object sender, TouchEventArgs e)
+        {
+            //Add fries and coke to the down scatterview
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+
+            //Add to total price!
+
+            ScatterItemsBottom.Add(friesPhoto);
+            ScatterItemsBottom.Add(drinkPhoto);
+
+             ScatterViewItem svi1 = scatterBottom.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
+             svi1.Orientation = 0;
+
+             ScatterViewItem svi2 = scatterBottom.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
+             svi2.Orientation = 0;
+        }
+
+        void MakeMenu_TouchDown_up(object sender, TouchEventArgs e)
+        {
+            //Add fries and coke to the down scatterview
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+
+            //Add to total price!
+
+            ScatterItemsTop.Add(friesPhoto);
+            ScatterItemsTop.Add(drinkPhoto);
+
+            ScatterViewItem svi1 = scatterTop.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
+            svi1.Orientation = 180;
+
+            ScatterViewItem svi2 = scatterTop.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
+            svi2.Orientation = 180;
+        }
+
+        void MakeMenu_TouchDown_left(object sender, TouchEventArgs e)
+        {
+            //Add fries and coke to the down scatterview
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+
+            //Add to total price!
+
+            ScatterItemsLeft.Add(friesPhoto);
+            ScatterItemsLeft.Add(drinkPhoto);
+
+            ScatterViewItem svi1 = scatterLeft.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
+            svi1.Orientation = 90;
+
+            ScatterViewItem svi2 = scatterLeft.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
+            svi2.Orientation = 90;
+        }
+
+        void MakeMenu_TouchDown_right(object sender, TouchEventArgs e)
+        {
+            //Add fries and coke to the down scatterview
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+
+            //Add to total price!
+
+            ScatterItemsRight.Add(friesPhoto);
+            ScatterItemsRight.Add(drinkPhoto);
+
+            ScatterViewItem svi1 = scatterRight.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
+            svi1.Orientation = 270;
+
+            ScatterViewItem svi2 = scatterRight.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
+            svi2.Orientation = 270;
         }
 
     }

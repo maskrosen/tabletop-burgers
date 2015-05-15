@@ -100,6 +100,7 @@
     <Resource Include="Images\CucumberTS.png" />
     <Resource Include="Images\DobleCheeseTS.png" />
     <Resource Include="Images\DoubleMeetTS.png" />
+    <Resource Include="Images\make_menu.png" />
     <Resource Include="Images\MeetTS.png" />
     <Resource Include="Images\TomatoSliceTS.png" />
     <Resource Include="Images\TopBreadTS.png" />
@@ -122,10 +123,8 @@
     <Resource Include="Images\PEPSITS.png" />
     <Resource Include="Images\SpriteTS.png" />
     <Resource Include="Resources\BlueGrain.jpg" />
-    <Resource Include="Images\place_your_tag_here_down.png" />
-    <Resource Include="Images\place_your_tag_here_left.png" />
-    <Resource Include="Images\place_your_tag_here_up.png" />
-    <Resource Include="Images\place_your_tag_here_right.png" />
+    <Resource Include="Images\place_your_tag_here.png" />
+    <Resource Include="Images\FrenchFriseTS.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
