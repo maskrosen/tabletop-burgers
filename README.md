@@ -1,3 +1,5 @@
 #Tabletop hamburger customizer
 
-This is a supercool tabletop app that lets you create your own hamburger
+This tabletop application allows users to collectively create customized hamburgers in a train station, tracking their train information
+
+![ScreenShot](/TabletopBurgers/TabletopBurgers/Images/app_image.png)

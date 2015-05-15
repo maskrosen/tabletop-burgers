@@ -40,6 +40,8 @@ namespace Drag_and_Drop
 
         private Dictionary<int, Tag> tagItems;
 
+        private Dictionary<String, int> tabTags;
+
         public ObservableCollection<PhotoData> LibraryItemsTop
         {
             get
