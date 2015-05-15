@@ -38,9 +38,8 @@ namespace Drag_and_Drop
         private ObservableCollection<PhotoData> scatterItemsRight;
         private ObservableCollection<PhotoData> scatterItemsLeft;
 
-        private Dictionary<int, Tag> tagItems;
-
-        private Dictionary<String, int> tabTags;
+        private Dictionary<long, Tag> tagItems;
+        private Dictionary<String, long> tabTags;
 
         public ObservableCollection<PhotoData> LibraryItemsTop
         {
@@ -159,16 +158,29 @@ namespace Drag_and_Drop
             }
         }
 
-        public Dictionary<int, Tag> TagItems
+        public Dictionary<long, Tag> TagItems
         {
             get
             {
                 if (tagItems == null)
                 {
-                    tagItems = new Dictionary<int, Tag>();
+                    tagItems = new Dictionary<long, Tag>();
                 }
 
                 return tagItems;
+            }
+        }
+
+        public Dictionary<String, long> TabTags
+        {
+            get
+            {
+                if (tabTags == null)
+                {
+                    tabTags = new Dictionary<String, long>();
+                }
+
+                return tabTags;
             }
         }
 
@@ -186,10 +198,17 @@ namespace Drag_and_Drop
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
 
-            Place_tag_right.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_right);
-            Place_tag_left.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_left);
-            Place_tag_up.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_up);
-            Place_tag_down.TouchDown += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchDown_down);
+            Place_tag_right.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_right);
+            Place_tag_left.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_left);
+            Place_tag_up.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_up);
+            Place_tag_down.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_down);
+
+            //Need to test this in the actual tabletop
+            //Comment for other computer-testing meanwhile
+            Place_tag_right.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_right);
+            Place_tag_left.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_left);
+            Place_tag_up.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_up);
+            Place_tag_down.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -518,67 +537,100 @@ namespace Drag_and_Drop
             e.Handled = true;
         }
 
-        void SurfaceWindow1_TouchDown_left(object sender, TouchEventArgs e)
+        void SurfaceWindow1_TouchEnter_left(object sender, TouchEventArgs e)
         {
             TouchDevice c = e.TouchDevice;
-            //by default it is a blob
-            string type = "";
-            //try to find the type of item on the Surface 
 
             if (c.GetIsTagRecognized() == true)
             {
-                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
-                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                TabTags.Add("Left", c.GetTagData().Value);
                 scatterLeft.Visibility = Visibility.Visible;
                 Place_tag_left.Visibility = Visibility.Collapsed;
+                //Label with the train info on top of the zone
             }
         }
 
-        void SurfaceWindow1_TouchDown_down(object sender, TouchEventArgs e)
+        void SurfaceWindow1_TouchEnter_down(object sender, TouchEventArgs e)
         {
             TouchDevice c = e.TouchDevice;
-            //by default it is a blob
-            string type = "";
-            //try to find the type of item on the Surface 
 
             if (c.GetIsTagRecognized() == true)
             {
-                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
-                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                TabTags.Add("Down", c.GetTagData().Value);
                 scatterBottom.Visibility = Visibility.Visible;
                 Place_tag_down.Visibility = Visibility.Collapsed;
             }
         }
 
-        void SurfaceWindow1_TouchDown_up(object sender, TouchEventArgs e)
+        void SurfaceWindow1_TouchEnter_up(object sender, TouchEventArgs e)
         {
             TouchDevice c = e.TouchDevice;
-            //by default it is a blob
-            string type = "";
-            //try to find the type of item on the Surface 
 
             if (c.GetIsTagRecognized() == true)
             {
-                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
-                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                TabTags.Add("Up", c.GetTagData().Value);
                 scatterTop.Visibility = Visibility.Visible;
                 Place_tag_up.Visibility = Visibility.Collapsed;
             }
         }
 
-        void SurfaceWindow1_TouchDown_right(object sender, TouchEventArgs e)
+        void SurfaceWindow1_TouchEnter_right(object sender, TouchEventArgs e)
         {
             TouchDevice c = e.TouchDevice;
-            //by default it is a blob
-            string type = "";
-            //try to find the type of item on the Surface 
 
             if (c.GetIsTagRecognized() == true)
             {
-                type += (" Series: " + c.GetTagData().Series.ToString("X", CultureInfo.InvariantCulture));
-                type += (" Value: " + c.GetTagData().Value.ToString("X", CultureInfo.InvariantCulture));
+                TabTags.Add("Right", c.GetTagData().Value);
                 scatterRight.Visibility = Visibility.Visible;
                 Place_tag_right.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        void SurfaceWindow1_TouchLeave_right(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                TabTags.Remove("Right");
+                scatterRight.Visibility = Visibility.Collapsed;
+                Place_tag_right.Visibility = Visibility.Visible;
+            }
+        }
+
+        void SurfaceWindow1_TouchLeave_left(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                TabTags.Remove("Left");
+                scatterLeft.Visibility = Visibility.Collapsed;
+                Place_tag_left.Visibility = Visibility.Visible;
+            }
+        }
+
+        void SurfaceWindow1_TouchLeave_up(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                TabTags.Remove("Up");
+                scatterTop.Visibility = Visibility.Collapsed;
+                Place_tag_up.Visibility = Visibility.Visible;
+            }
+        }
+
+        void SurfaceWindow1_TouchLeave_down(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                TabTags.Remove("Down");
+                scatterBottom.Visibility = Visibility.Collapsed;
+                Place_tag_down.Visibility = Visibility.Visible;
             }
         }
 
