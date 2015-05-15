@@ -275,7 +275,7 @@
         </Image>
 
         <!-- "Make menu" buttons-->
-        <Image Source="Images/make_menu.png" Name="Make_menu_right" Grid.Column="5" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
+        <Image Source="Images/make_menu.png" Name="Make_menu_right" Grid.Column="5" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
             <Image.LayoutTransform>
                 <RotateTransform Angle="270"/>
             </Image.LayoutTransform>
@@ -297,7 +297,7 @@
         </Image>
 
         <!--- Train info labels -->
-        <TextBlock Name="Train_label_right" Grid.Column="5" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Black" Visibility="Hidden">
+        <TextBlock Name="Train_label_right" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Black" Visibility="Hidden">
             <TextBlock.LayoutTransform>
                 <RotateTransform Angle="270"/>
             </TextBlock.LayoutTransform>
@@ -312,7 +312,7 @@
                 <RotateTransform Angle="0"/>
             </TextBlock.LayoutTransform>
         </TextBlock>
-        <TextBlock Name="Train_label_left" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Foreground="Black" Visibility="Hidden">
+        <TextBlock Name="Train_label_left" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Foreground="Black" Visibility="Hidden">
             <TextBlock.LayoutTransform>
                 <RotateTransform Angle="90"/>
             </TextBlock.LayoutTransform>

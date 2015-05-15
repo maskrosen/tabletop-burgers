@@ -525,30 +525,32 @@ namespace Drag_and_Drop
             if (c.GetIsTagRecognized() == true)
             {
                 long tagNumber = c.GetTagData().Value;
-
-                Place_tag_left.Visibility = Visibility.Collapsed;
-                Tag tag = TagItems[tagNumber];
-                if (tag.orderPlaced)
+                if (TagItems.ContainsKey(tagNumber))
                 {
-                    Order_placed_left.Visibility = Visibility.Visible;
-                    String minute;
-                    if (tag.timeLeft == 1)
+                    Place_tag_left.Visibility = Visibility.Collapsed;
+                    Tag tag = TagItems[tagNumber];
+                    if (tag.orderPlaced)
                     {
-                        minute = " minute";
+                        Order_placed_left.Visibility = Visibility.Visible;
+                        String minute;
+                        if (tag.timeLeft == 1)
+                        {
+                            minute = " minute";
+                        }
+                        else
+                        {
+                            minute = " minutes";
+                        }
+                        Order_placed_left.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
                     }
                     else
                     {
-                        minute = " minutes";
+                        scatterLeft.Visibility = Visibility.Visible;
+                        Train_label_left.Visibility = Visibility.Visible;
+                        Train_label_left.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                        Make_menu_left.Visibility = Visibility.Visible;
+
                     }
-                    Order_placed_left.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
-                }
-                else
-                {
-                    scatterLeft.Visibility = Visibility.Visible;
-                    Train_label_left.Visibility = Visibility.Visible;
-                    Train_label_left.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                    Make_menu_left.Visibility = Visibility.Visible;
-            
                 }
             }
         }
@@ -560,29 +562,31 @@ namespace Drag_and_Drop
             if (c.GetIsTagRecognized() == true)
             {
                 long tagNumber = c.GetTagData().Value;
-
-                Place_tag_down.Visibility = Visibility.Collapsed;
-                Tag tag = TagItems[tagNumber];
-                if (tag.orderPlaced)
+                if (TagItems.ContainsKey(tagNumber))
                 {
-                    String minute;
-                    if (tag.timeLeft == 1)
+                    Place_tag_down.Visibility = Visibility.Collapsed;
+                    Tag tag = TagItems[tagNumber];
+                    if (tag.orderPlaced)
                     {
-                        minute = " minute";
+                        String minute;
+                        if (tag.timeLeft == 1)
+                        {
+                            minute = " minute";
+                        }
+                        else
+                        {
+                            minute = " minutes";
+                        }
+                        Order_placed_down.Visibility = Visibility.Visible;
+                        Order_placed_down.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
                     }
                     else
                     {
-                        minute = " minutes";
+                        scatterBottom.Visibility = Visibility.Visible;
+                        Train_label_down.Visibility = Visibility.Visible;
+                        Train_label_down.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                        Make_menu_down.Visibility = Visibility.Visible;
                     }
-                    Order_placed_down.Visibility = Visibility.Visible;
-                    Order_placed_down.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
-                }
-                else
-                {
-                    scatterBottom.Visibility = Visibility.Visible;
-                    Train_label_down.Visibility = Visibility.Visible;
-                    Train_label_down.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                    Make_menu_down.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -594,29 +598,31 @@ namespace Drag_and_Drop
             if (c.GetIsTagRecognized() == true)
             {
                 long tagNumber = c.GetTagData().Value;
-
-                Place_tag_up.Visibility = Visibility.Collapsed;
-                Tag tag = TagItems[tagNumber];
-                if (tag.orderPlaced)
+                if (TagItems.ContainsKey(tagNumber))
                 {
-                    String minute;
-                    if (tag.timeLeft == 1)
+                    Place_tag_up.Visibility = Visibility.Collapsed;
+                    Tag tag = TagItems[tagNumber];
+                    if (tag.orderPlaced)
                     {
-                        minute = " minute";
+                        String minute;
+                        if (tag.timeLeft == 1)
+                        {
+                            minute = " minute";
+                        }
+                        else
+                        {
+                            minute = " minutes";
+                        }
+                        Order_placed_up.Visibility = Visibility.Visible;
+                        Order_placed_up.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
                     }
                     else
                     {
-                        minute = " minutes";
+                        scatterTop.Visibility = Visibility.Visible;
+                        Train_label_up.Visibility = Visibility.Visible;
+                        Train_label_up.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                        Make_menu_up.Visibility = Visibility.Visible;
                     }
-                    Order_placed_up.Visibility = Visibility.Visible;
-                    Order_placed_up.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
-                }
-                else
-                {
-                    scatterTop.Visibility = Visibility.Visible;
-                    Train_label_up.Visibility = Visibility.Visible;
-                    Train_label_up.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                    Make_menu_up.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -628,29 +634,32 @@ namespace Drag_and_Drop
             if (c.GetIsTagRecognized() == true)
             {
                 long tagNumber = c.GetTagData().Value;
-                
-                Place_tag_right.Visibility = Visibility.Collapsed;
-                Tag tag = TagItems[tagNumber];
-                if (tag.orderPlaced)
+
+                if (TagItems.ContainsKey(tagNumber))
                 {
-                    String minute;
-                    if (tag.timeLeft == 1)
+                    Place_tag_right.Visibility = Visibility.Collapsed;
+                    Tag tag = TagItems[tagNumber];
+                    if (tag.orderPlaced)
                     {
-                        minute = " minute";
+                        String minute;
+                        if (tag.timeLeft == 1)
+                        {
+                            minute = " minute";
+                        }
+                        else
+                        {
+                            minute = " minutes";
+                        }
+                        Order_placed_right.Visibility = Visibility.Visible;
+                        Order_placed_right.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
                     }
                     else
                     {
-                        minute = " minutes";
+                        scatterRight.Visibility = Visibility.Visible;
+                        Train_label_right.Visibility = Visibility.Visible;
+                        Train_label_right.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
+                        Make_menu_right.Visibility = Visibility.Visible;
                     }
-                    Order_placed_right.Visibility = Visibility.Visible;
-                    Order_placed_right.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in "+tag.timeLeft+ minute;
-                }
-                else
-                {
-                    scatterRight.Visibility = Visibility.Visible;
-                    Train_label_right.Visibility = Visibility.Visible;
-                    Train_label_right.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                    Make_menu_right.Visibility = Visibility.Visible;
                 }
             }
         }
