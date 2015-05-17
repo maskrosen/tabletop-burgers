@@ -827,6 +827,7 @@ namespace Drag_and_Drop
             PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
 
             //Add to total price!
+            bottomPrice += 35; 
 
             ScatterItemsBottom.Add(friesPhoto);
             ScatterItemsBottom.Add(drinkPhoto);
@@ -863,6 +864,7 @@ namespace Drag_and_Drop
             PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
 
             //Add to total price!
+            topPrice += 35;
 
             ScatterItemsTop.Add(friesPhoto);
             ScatterItemsTop.Add(drinkPhoto);
@@ -900,6 +902,8 @@ namespace Drag_and_Drop
 
             //Add to total price!
 
+            leftPrice += 35;
+
             ScatterItemsLeft.Add(friesPhoto);
             ScatterItemsLeft.Add(drinkPhoto);
 
@@ -935,6 +939,8 @@ namespace Drag_and_Drop
             PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
 
             //Add to total price!
+
+            rightPrice += 35;
 
             ScatterItemsRight.Add(friesPhoto);
             ScatterItemsRight.Add(drinkPhoto);
