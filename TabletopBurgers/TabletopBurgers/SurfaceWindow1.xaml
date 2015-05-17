@@ -52,7 +52,7 @@
     </s:SurfaceWindow.Resources>
 
     <!--- General grid -->
-    <Grid Background="{StaticResource WindowBackground2}">
+    <Grid Background="{StaticResource WindowBackground2}" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*" />
             <RowDefinition Height="0.4*" />
@@ -317,6 +317,29 @@
                 <RotateTransform Angle="90"/>
             </TextBlock.LayoutTransform>
         </TextBlock>
+
+        <!--- Price info labels -->
+        <TextBlock Name="Price_label_right" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Price_label_up" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Price_label_down" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock Name="Price_label_left" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Foreground="Black" Visibility="Hidden">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
 
         <!-- Middle popular-burgers area-->
         <s:SurfaceListBox 

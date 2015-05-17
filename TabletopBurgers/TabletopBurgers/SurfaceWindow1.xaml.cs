@@ -40,6 +40,11 @@ namespace Drag_and_Drop
 
         private Dictionary<long, Tag> tagItems;
 
+        private double bottomPrice = 0;
+        private double topPrice = 0;
+        private double leftPrice = 0;
+        private double rightPrice = 0;
+
         public ObservableCollection<PhotoData> LibraryItemsTop
         {
             get
@@ -392,11 +397,17 @@ namespace Drag_and_Drop
 
             // Hide the ScatterViewItem for now. We will remove it if the DragDrop is successful.
             draggedElement.Visibility = Visibility.Hidden;
+          
         }
 
         private void Scatter_DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData data = e.Cursor.Data as PhotoData;
+            if (e.Cursor.DragSource == scatterBottom)
+            {
+                bottomPrice -= data.Price;
+                Price_label_left.Text = "Price " + bottomPrice;
+            }
         }
 
         private void Scatter_DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
@@ -404,6 +415,16 @@ namespace Drag_and_Drop
             if ((e.Cursor.CurrentTarget != scatterBottom || e.Cursor.CurrentTarget != scatterTop || e.Cursor.CurrentTarget != scatterRight || e.Cursor.CurrentTarget != scatterLeft) && e.Cursor.Effects == DragDropEffects.Move)
             {
                 e.Handled = true;
+               
+            }
+
+            if ((e.Cursor.DragSource == scatterBottom && e.Cursor.CurrentTarget != scatterBottom && e.Cursor.Effects == DragDropEffects.Move))
+            {
+                bottomPrice -= (e.Cursor.Data as PhotoData).Price;
+
+                
+                Price_label_left.Visibility = Visibility.Visible;
+                Price_label_left.Text = "Price " + bottomPrice;
             }
         }
 
@@ -419,6 +440,12 @@ namespace Drag_and_Drop
                 svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
                 svi.Center = e.Cursor.GetPosition(scatterBottom);
                 svi.Orientation = e.Cursor.GetOrientation(scatterBottom);
+
+                bottomPrice += clonedPhoto.Price;
+              
+
+                Price_label_left.Visibility = Visibility.Visible;
+                Price_label_left.Text = "Price " + bottomPrice;
 
             }
             else if (e.Cursor.CurrentTarget == scatterTop)
