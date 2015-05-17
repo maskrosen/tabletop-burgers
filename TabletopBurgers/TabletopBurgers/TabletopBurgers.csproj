@@ -125,6 +125,30 @@
     <Resource Include="Resources\BlueGrain.jpg" />
     <Resource Include="Images\place_your_tag_here.png" />
     <Resource Include="Images\FrenchFriseTS.png" />
+    <Resource Include="Images\CaffeeTS.png" />
+    <Resource Include="Images\CaffeLatteTS.png" />
+    <Resource Include="Images\carrot.png" />
+    <Resource Include="Images\CeaserSalaTS.png" />
+    <Resource Include="Images\CheckenBoxTS.png" />
+    <Resource Include="Images\CheckenFilletTS.png" />
+    <Resource Include="Images\CheckenNuggetsTS.png" />
+    <Resource Include="Images\BreadWithSemsonTS.png" />
+    <Resource Include="Images\ChocoDounts.png" />
+    <Resource Include="Images\chooIceCreamTS.png" />
+    <Resource Include="Images\CinamonTS.png" />
+    <Resource Include="Images\cookiesTS.png" />
+    <Resource Include="Images\CreamDountsTS.png" />
+    <Resource Include="Images\CupCake3TS.png" />
+    <Resource Include="Images\FruitSaladTS.png" />
+    <Resource Include="Images\GreekSaladTS.png" />
+    <Resource Include="Images\GreenMuffenTS.png" />
+    <Resource Include="Images\MashroomTS.png" />
+    <Resource Include="Images\OlivesTS.png" />
+    <Resource Include="Images\PepearTS.png" />
+    <Resource Include="Images\SauceTS.png" />
+    <Resource Include="Images\shrimpSaladTS.png" />
+    <Resource Include="Images\TopBreadWithSemsonTS.png" />
+    <Resource Include="Images\BlueDountsTS.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
