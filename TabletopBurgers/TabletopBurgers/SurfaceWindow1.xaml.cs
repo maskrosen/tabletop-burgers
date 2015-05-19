@@ -194,12 +194,10 @@ namespace Drag_and_Drop
             Place_tag_up.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_up);
             Place_tag_down.TouchEnter += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchEnter_down);
 
-            //Need to test this in the actual tabletop
-            //Comment for other computer-testing meanwhile
-           /* Place_tag_right.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_right);
-            Place_tag_left.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_left);
-            Place_tag_up.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_up);
-            Place_tag_down.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);*/
+            scatterRight.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_right);
+            scatterLeft.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_left);
+            scatterTop.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_up);
+            scatterBottom.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);
 
             Make_menu_down.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_down);
             Make_menu_up.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_up);
