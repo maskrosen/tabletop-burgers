@@ -815,7 +815,10 @@ namespace Drag_and_Drop
         {
             TouchDevice c = e.TouchDevice;
 
-            if (c.GetIsTagRecognized() == true)
+            int row = Grid.GetRow((UIElement)e.Source);
+            int column = Grid.GetColumn((UIElement)e.Source);
+
+            if (c.GetIsTagRecognized() == true && (row<2 || row>4 || column!=5))
             {
                 scatterRight.Visibility = Visibility.Collapsed;
                 Place_tag_right.Visibility = Visibility.Visible;
@@ -829,7 +832,10 @@ namespace Drag_and_Drop
         {
             TouchDevice c = e.TouchDevice;
 
-            if (c.GetIsTagRecognized() == true)
+            int row = Grid.GetRow((UIElement)e.Source);
+            int column = Grid.GetColumn((UIElement)e.Source);
+
+            if (c.GetIsTagRecognized() == true && (row < 2 || row > 4 || column != 1))
             {
                 scatterLeft.Visibility = Visibility.Collapsed;
                 Place_tag_left.Visibility = Visibility.Visible;
@@ -843,7 +849,10 @@ namespace Drag_and_Drop
         {
             TouchDevice c = e.TouchDevice;
 
-            if (c.GetIsTagRecognized() == true)
+            int row = Grid.GetRow((UIElement)e.Source);
+            int column = Grid.GetColumn((UIElement)e.Source);
+
+            if (c.GetIsTagRecognized() == true && (row !=2 || column != 3))
             {
                 scatterTop.Visibility = Visibility.Collapsed;
                 Place_tag_up.Visibility = Visibility.Visible;
@@ -857,7 +866,10 @@ namespace Drag_and_Drop
         {
             TouchDevice c = e.TouchDevice;
 
-            if (c.GetIsTagRecognized() == true)
+            int row = Grid.GetRow((UIElement)e.Source);
+            int column = Grid.GetColumn((UIElement)e.Source);
+
+            if (c.GetIsTagRecognized() == true && (row != 4 || column != 3))
             {
                 scatterBottom.Visibility = Visibility.Collapsed;
                 Place_tag_down.Visibility = Visibility.Visible;
