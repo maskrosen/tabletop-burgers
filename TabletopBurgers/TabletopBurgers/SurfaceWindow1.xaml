@@ -76,7 +76,7 @@
         <s:SurfaceListBox 
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="7"
+            Grid.ColumnSpan="6"
             x:Name="ListBox"
             VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItemsTop}"
@@ -99,7 +99,7 @@
         <s:SurfaceListBox 
             Grid.Row="6"
             Grid.Column="0"
-            Grid.ColumnSpan="7"
+            Grid.ColumnSpan="6"
             x:Name="ListBoxDown"
             VerticalAlignment="Top"
             ItemsSource="{Binding Path=LibraryItemsBottom}"
@@ -144,8 +144,8 @@
 
         <s:SurfaceListBox 
             Grid.Column="6"
-            Grid.Row="1"
-            Grid.RowSpan="5"
+            Grid.Row="0"
+            Grid.RowSpan="7"
             x:Name="ListBoxRight"
             HorizontalAlignment="Center"
             ItemsSource="{Binding Path=LibraryItemsRight}"

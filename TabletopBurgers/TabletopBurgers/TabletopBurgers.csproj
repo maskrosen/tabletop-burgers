@@ -136,7 +136,6 @@
     <Resource Include="Images\ChocoDounts.png" />
     <Resource Include="Images\chooIceCreamTS.png" />
     <Resource Include="Images\CinamonTS.png" />
-    <Resource Include="Images\cookiesTS.png" />
     <Resource Include="Images\CreamDountsTS.png" />
     <Resource Include="Images\CupCake3TS.png" />
     <Resource Include="Images\FruitSaladTS.png" />
@@ -149,6 +148,21 @@
     <Resource Include="Images\shrimpSaladTS.png" />
     <Resource Include="Images\TopBreadWithSemsonTS.png" />
     <Resource Include="Images\BlueDountsTS.png" />
+    <Resource Include="Images\Beer.png" />
+    <Resource Include="Images\cabbage.png" />
+    <Resource Include="Images\cookies.png" />
+    <Resource Include="Images\Egg.png" />
+    <Resource Include="Images\FrenchFriseWithMeat.png" />
+    <Resource Include="Images\HotDogTS.png" />
+    <Resource Include="Images\OnionFries.png" />
+    <Resource Include="Images\ovocadoSlice.png" />
+    <Resource Include="Images\papper.png" />
+    <Resource Include="Images\PistasioIcecreamTS.png" />
+    <Resource Include="Images\ShrimpTS.png" />
+    <Resource Include="Images\SpiceTS.png" />
+    <Resource Include="Images\StrawberryDonutsTS.png" />
+    <Resource Include="Images\SugerDonutsTS.png" />
+    <Resource Include="Images\VanilaCupCakeTS.jpg" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
