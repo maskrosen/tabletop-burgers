@@ -172,6 +172,15 @@
     <Resource Include="Images\KebabMeat.png" />
     <Resource Include="Images\SalamonFiletTS.png" />
     <Resource Include="Images\Water.png" />
+    <Resource Include="Images\breakfast.png" />
+    <Resource Include="Images\cheesecake.png" />
+    <Resource Include="Images\chocolate.png" />
+    <Resource Include="Images\nachos.png" />
+    <Resource Include="Images\onion-thing.png" />
+    <Resource Include="Images\pancakes2.png" />
+    <Resource Include="Images\pizza.png" />
+    <Resource Include="Images\popcorn.png" />
+    <Resource Include="Images\salad.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

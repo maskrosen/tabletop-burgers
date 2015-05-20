@@ -218,8 +218,14 @@ namespace Drag_and_Drop
             LibraryItemsLeft.Add(new PhotoData("Images/TopBreadWithSemsonTS.png", "Top Bread", 10));
             LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseTS.png", "French Fries", 15));
             LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseWithMeat.png", "French Fries with meat", 20));
-            LibraryItemsLeft.Add(new PhotoData("Images/OnionFries.png", "Onion Fries", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/OnionFries.png", "Onion Rings", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/onion-thing.png", "Onion Rings 2", 15));
             LibraryItemsLeft.Add(new PhotoData("Images/WedgeFries.png", "Wedge Fries", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/nachos.png", "Nachos", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/popcorn.png", "Popcorn", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/pizza.png", "Pizza", 55));
+            LibraryItemsLeft.Add(new PhotoData("Images/breakfast.png", "Breakfast", 35));
+            LibraryItemsLeft.Add(new PhotoData("Images/pancakes2.png", "Breakfast", 35));
 
             LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
             LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
@@ -235,6 +241,7 @@ namespace Drag_and_Drop
             LibraryItemsBottom.Add(new PhotoData("Images/FruitSaladTS.png", "Fruit Salad", 70));
             LibraryItemsBottom.Add(new PhotoData("Images/GreekSaladTS.png", "Greek Salad", 70));
             LibraryItemsBottom.Add(new PhotoData("Images/shrimpSaladTS.png", "Shrimp Salad", 70));
+            LibraryItemsBottom.Add(new PhotoData("Images/salad.png", "Salad", 40));
             LibraryItemsBottom.Add(new PhotoData("Images/cabbage.png", "Cabbage", 4));
             LibraryItemsBottom.Add(new PhotoData("Images/ovocadoSlice.png", "Avocado", 4));
             LibraryItemsBottom.Add(new PhotoData("Images/papper.png", "Bell pepper", 4));
@@ -244,6 +251,7 @@ namespace Drag_and_Drop
             LibraryItemsTop.Add(new PhotoData("Images/StrawberryDonutsTS.png", "Strawberry Dounts", 20));
             LibraryItemsTop.Add(new PhotoData("Images/ChocoDounts.png", "Chocolate Donut", 20));
             LibraryItemsTop.Add(new PhotoData("Images/SugerDonutsTS.png", "Sugar Donut", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/CreamDountsTS.png", "Cream Donut", 20));
             LibraryItemsTop.Add(new PhotoData("Images/CaffeLatteTS.png", "Latte", 15));
             LibraryItemsTop.Add(new PhotoData("Images/CaffeeTS.png", "Coffee", 15));
             LibraryItemsTop.Add(new PhotoData("Images/chooIceCreamTS.png", "Chocolate ice cream", 10));
@@ -251,10 +259,10 @@ namespace Drag_and_Drop
             LibraryItemsTop.Add(new PhotoData("Images/StrawberyIceCream.png", "Strawberry ice cream", 10));
             LibraryItemsTop.Add(new PhotoData("Images/CinamonTS.png", "Cinnamon roll", 15));
             LibraryItemsTop.Add(new PhotoData("Images/cookies.png", "Cookie", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/CreamDountsTS.png", "Cream Donut", 20));
             LibraryItemsTop.Add(new PhotoData("Images/CupCake3TS.png", "Cupcake", 20));
             LibraryItemsTop.Add(new PhotoData("Images/GreenMuffenTS.png", "Muffin", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/VanilaCupCakeTS.jpg", "Vanilla Cupcake", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/cheesecake.png", "Cheesecake", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/chocolate.png", "Chocolate", 10));
             LibraryItemsTop.Add(new PhotoData("Images/Beer.png", "Beer", 20));
             LibraryItemsTop.Add(new PhotoData("Images/PEPSITS.png", "Pepsi", 20));
             LibraryItemsTop.Add(new PhotoData("Images/FantaTS.png", "Fanta", 20));
@@ -658,6 +666,7 @@ namespace Drag_and_Drop
                 if (TagItems.ContainsKey(tagNumber))
                 {
                     Place_tag_left.Visibility = Visibility.Collapsed;
+                    Price_label_left.Visibility = Visibility.Visible;
                     Tag tag = TagItems[tagNumber];
                     if (tag.orderPlaced)
                     {
@@ -695,6 +704,7 @@ namespace Drag_and_Drop
                 if (TagItems.ContainsKey(tagNumber))
                 {
                     Place_tag_down.Visibility = Visibility.Collapsed;
+                    Price_label_down.Visibility = Visibility.Visible;
                     Tag tag = TagItems[tagNumber];
                     if (tag.orderPlaced)
                     {
@@ -731,6 +741,7 @@ namespace Drag_and_Drop
                 if (TagItems.ContainsKey(tagNumber))
                 {
                     Place_tag_up.Visibility = Visibility.Collapsed;
+                    Price_label_up.Visibility = Visibility.Visible;
                     Tag tag = TagItems[tagNumber];
                     if (tag.orderPlaced)
                     {
@@ -768,6 +779,7 @@ namespace Drag_and_Drop
                 if (TagItems.ContainsKey(tagNumber))
                 {
                     Place_tag_right.Visibility = Visibility.Collapsed;
+                    Price_label_right.Visibility = Visibility.Visible;
                     Tag tag = TagItems[tagNumber];
                     if (tag.orderPlaced)
                     {
@@ -804,6 +816,7 @@ namespace Drag_and_Drop
                 Place_tag_right.Visibility = Visibility.Visible;
                 Train_label_right.Visibility = Visibility.Hidden;
                 Make_menu_right.Visibility = Visibility.Hidden;
+                Price_label_right.Visibility = Visibility.Hidden;
             }
         }
 
@@ -817,6 +830,7 @@ namespace Drag_and_Drop
                 Place_tag_left.Visibility = Visibility.Visible;
                 Train_label_left.Visibility = Visibility.Hidden;
                 Make_menu_left.Visibility = Visibility.Hidden;
+                Price_label_left.Visibility = Visibility.Hidden;
             }
         }
 
@@ -830,6 +844,7 @@ namespace Drag_and_Drop
                 Place_tag_up.Visibility = Visibility.Visible;
                 Train_label_up.Visibility = Visibility.Hidden;
                 Make_menu_up.Visibility = Visibility.Hidden;
+                Price_label_up.Visibility = Visibility.Hidden;
             }
         }
 
@@ -843,6 +858,7 @@ namespace Drag_and_Drop
                 Place_tag_down.Visibility = Visibility.Visible;
                 Train_label_down.Visibility = Visibility.Hidden;
                 Make_menu_down.Visibility = Visibility.Hidden;
+                Price_label_down.Visibility = Visibility.Hidden;
             }
         }
 
