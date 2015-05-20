@@ -199,6 +199,11 @@ namespace Drag_and_Drop
             scatterTop.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_up);
             scatterBottom.TouchLeave += new EventHandler<TouchEventArgs>(SurfaceWindow1_TouchLeave_down);
 
+            Order_placed_left.TouchLeave += new EventHandler<TouchEventArgs>(OrderPlaced_touchLeave_left);
+            Order_placed_right.TouchLeave += new EventHandler<TouchEventArgs>(OrderPlaced_touchLeave_right);
+            Order_placed_up.TouchLeave += new EventHandler<TouchEventArgs>(OrderPlaced_touchLeave_up);
+            Order_placed_down.TouchLeave += new EventHandler<TouchEventArgs>(OrderPlaced_touchLeave_down);
+
             Make_menu_down.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_down);
             Make_menu_up.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_up);
             Make_menu_left.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_left);
@@ -296,15 +301,11 @@ namespace Drag_and_Drop
             TagItems.Add(6, new Tag(6, 2453, "Jönköping", new DateTime(2015, 5, 20, 12, 03, 0), 12, true, 10));
 
             BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
-            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 70));
-            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 70));
+            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 67));
+            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 62));
+            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 75));
+            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 80));
+            BurgerItems.Add(new PhotoData("Images/simple-burger.png", "Basic burger", 50));
 
         }
 
@@ -866,6 +867,50 @@ namespace Drag_and_Drop
             }
         }
 
+
+        void OrderPlaced_touchLeave_left(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                Order_placed_left.Visibility = Visibility.Hidden;
+                Place_tag_left.Visibility = Visibility.Visible;
+            }
+        }
+
+        void OrderPlaced_touchLeave_right(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                Order_placed_right.Visibility = Visibility.Hidden;
+                Place_tag_right.Visibility = Visibility.Visible;
+            }
+        }
+
+        void OrderPlaced_touchLeave_down(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                Order_placed_down.Visibility = Visibility.Hidden;
+                Place_tag_down.Visibility = Visibility.Visible;
+            }
+        }
+
+        void OrderPlaced_touchLeave_up(object sender, TouchEventArgs e)
+        {
+            TouchDevice c = e.TouchDevice;
+
+            if (c.GetIsTagRecognized() == true)
+            {
+                Order_placed_up.Visibility = Visibility.Hidden;
+                Place_tag_up.Visibility = Visibility.Visible;
+            }
+        }
         void MakeMenu_TouchDown_down(object sender, TouchEventArgs e)
         {
             //Add fries and coke to the down scatterview
@@ -880,10 +925,10 @@ namespace Drag_and_Drop
             ScatterItemsBottom.Add(drinkPhoto);
 
              ScatterViewItem svi1 = scatterBottom.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
-             svi1.Orientation = 0;
+             svi1.Orientation = 270;
 
              ScatterViewItem svi2 = scatterBottom.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
-             svi2.Orientation = 0;
+             svi2.Orientation = 180;
 
              svi1.Background = Brushes.Transparent;
              svi2.Background = Brushes.Transparent;
@@ -919,10 +964,10 @@ namespace Drag_and_Drop
             ScatterItemsTop.Add(drinkPhoto);
 
             ScatterViewItem svi1 = scatterTop.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
-            svi1.Orientation = 180;
+            svi1.Orientation = 90;
 
             ScatterViewItem svi2 = scatterTop.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
-            svi2.Orientation = 180;
+            svi2.Orientation = 0;
 
             svi1.Background = Brushes.Transparent;
             svi2.Background = Brushes.Transparent;
@@ -959,10 +1004,10 @@ namespace Drag_and_Drop
             ScatterItemsLeft.Add(drinkPhoto);
 
             ScatterViewItem svi1 = scatterLeft.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
-            svi1.Orientation = 90;
+            svi1.Orientation = 0;
 
             ScatterViewItem svi2 = scatterLeft.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
-            svi2.Orientation = 90;
+            svi2.Orientation = 270;
 
             svi1.Background = Brushes.Transparent;
             svi2.Background = Brushes.Transparent;
@@ -998,10 +1043,10 @@ namespace Drag_and_Drop
             ScatterItemsRight.Add(drinkPhoto);
 
             ScatterViewItem svi1 = scatterRight.ItemContainerGenerator.ContainerFromItem(friesPhoto) as ScatterViewItem;
-            svi1.Orientation = 270;
+            svi1.Orientation = 180;
 
             ScatterViewItem svi2 = scatterRight.ItemContainerGenerator.ContainerFromItem(drinkPhoto) as ScatterViewItem;
-            svi2.Orientation = 270;
+            svi2.Orientation = 90;
 
             svi1.Background = Brushes.Transparent;
             svi2.Background = Brushes.Transparent;

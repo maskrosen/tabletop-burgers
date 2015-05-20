@@ -181,6 +181,7 @@
     <Resource Include="Images\pizza.png" />
     <Resource Include="Images\popcorn.png" />
     <Resource Include="Images\salad.png" />
+    <Resource Include="Images\simple-burger.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
