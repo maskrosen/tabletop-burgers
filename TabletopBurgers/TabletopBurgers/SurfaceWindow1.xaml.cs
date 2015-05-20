@@ -218,16 +218,19 @@ namespace Drag_and_Drop
             LibraryItemsLeft.Add(new PhotoData("Images/TopBreadWithSemsonTS.png", "Top Bread", 10));
             LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseTS.png", "French Fries", 15));
             LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseWithMeat.png", "French Fries with meat", 20));
-            LibraryItemsLeft.Add(new PhotoData("Images/OnionFriesTS.png", "Onion Fries", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/OnionFries.png", "Onion Fries", 15));
+            LibraryItemsLeft.Add(new PhotoData("Images/WedgeFries.png", "Wedge Fries", 15));
 
             LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
             LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
             LibraryItemsBottom.Add(new PhotoData("Images/LuttesTS.png", "Lettuce", 2));
             LibraryItemsBottom.Add(new PhotoData("Images/OnionTS.png", "Onions", 3));
+            LibraryItemsBottom.Add(new PhotoData("Images/Onion.png", "Onions 2", 3));
             LibraryItemsBottom.Add(new PhotoData("Images/MashroomTS.png", "Mushroom", 3));
             LibraryItemsBottom.Add(new PhotoData("Images/OlivesTS.png", "Olives", 5));
             LibraryItemsBottom.Add(new PhotoData("Images/PepearTS.png", "Bell pepper", 5));
             LibraryItemsBottom.Add(new PhotoData("Images/carrot.png", "Carrot", 4));
+            LibraryItemsBottom.Add(new PhotoData("Images/carrot2.png", "Carrot 2", 4));
             LibraryItemsBottom.Add(new PhotoData("Images/CeaserSalaTS.png", "Ceasar Salad", 70));
             LibraryItemsBottom.Add(new PhotoData("Images/FruitSaladTS.png", "Fruit Salad", 70));
             LibraryItemsBottom.Add(new PhotoData("Images/GreekSaladTS.png", "Greek Salad", 70));
@@ -239,12 +242,13 @@ namespace Drag_and_Drop
 
             LibraryItemsTop.Add(new PhotoData("Images/BlueDountsTS.png", "Blue Dounts", 20));
             LibraryItemsTop.Add(new PhotoData("Images/StrawberryDonutsTS.png", "Strawberry Dounts", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/CaffeLatteTS.png", "Latte", 15));
-            LibraryItemsTop.Add(new PhotoData("Images/CaffeeTS.png", "Coffee", 15));
             LibraryItemsTop.Add(new PhotoData("Images/ChocoDounts.png", "Chocolate Donut", 20));
             LibraryItemsTop.Add(new PhotoData("Images/SugerDonutsTS.png", "Sugar Donut", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/CaffeLatteTS.png", "Latte", 15));
+            LibraryItemsTop.Add(new PhotoData("Images/CaffeeTS.png", "Coffee", 15));
             LibraryItemsTop.Add(new PhotoData("Images/chooIceCreamTS.png", "Chocolate ice cream", 10));
             LibraryItemsTop.Add(new PhotoData("Images/PistasioIcecreamTS.png", "Pistasio ice cream", 10));
+            LibraryItemsTop.Add(new PhotoData("Images/StrawberyIceCream.png", "Strawberry ice cream", 10));
             LibraryItemsTop.Add(new PhotoData("Images/CinamonTS.png", "Cinnamon roll", 15));
             LibraryItemsTop.Add(new PhotoData("Images/cookies.png", "Cookie", 10));
             LibraryItemsTop.Add(new PhotoData("Images/CreamDountsTS.png", "Cream Donut", 20));
@@ -256,6 +260,9 @@ namespace Drag_and_Drop
             LibraryItemsTop.Add(new PhotoData("Images/FantaTS.png", "Fanta", 20));
             LibraryItemsTop.Add(new PhotoData("Images/SpriteTS.png", "Sprite", 20));
             LibraryItemsTop.Add(new PhotoData("Images/OrangeTS.png", "Orange Juice", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/HallonSmoothie.png", "Hallon Smoothie", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/lemonSmootie.png", "Lemon Smoothie", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/Water.png", "Water", 20));
 
             LibraryItemsRight.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
             LibraryItemsRight.Add(new PhotoData("Images/EggTS.png", "Egg    ", 10));
@@ -270,6 +277,8 @@ namespace Drag_and_Drop
             LibraryItemsRight.Add(new PhotoData("Images/SauceTS.png", "Sauce", 1));
             LibraryItemsRight.Add(new PhotoData("Images/HotDogTS.png", "Hot Dog", 30));
             LibraryItemsRight.Add(new PhotoData("Images/ShrimpTS.png", "Shrimps", 30));
+            LibraryItemsRight.Add(new PhotoData("Images/KebabMeat.png", "Kebab meat", 20));
+            LibraryItemsRight.Add(new PhotoData("Images/SalamonFiletTS.png", "Salmon Fillet", 25));
 
             TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
             TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));

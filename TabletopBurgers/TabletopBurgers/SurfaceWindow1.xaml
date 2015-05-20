@@ -172,7 +172,7 @@
             Grid.RowSpan="3"
             x:Name="scatterLeft"
             Background="DarkGray"
-            Visibility="Collapsed"
+            Visibility="Visible"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsLeft}"
@@ -188,7 +188,7 @@
             Grid.RowSpan="3"
             x:Name="scatterRight"
             Background="DarkGray"
-            Visibility="Collapsed"
+            Visibility="Visible"
             AllowDrop="True"
             ItemTemplate="{StaticResource ScatterViewImage}"
             ItemsSource="{Binding ScatterItemsRight}"
@@ -253,7 +253,7 @@
         </TextBlock>
 
         <!-- "Place your tag here" images-->
-        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_right" Grid.Column="5" Grid.Row="3"  ToolTip="Place your tag here">
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_right" Grid.Column="5" Grid.Row="3"  ToolTip="Place your tag here" Visibility="Hidden">
             <Image.LayoutTransform>
                 <RotateTransform Angle="270"/>
             </Image.LayoutTransform>
@@ -263,7 +263,7 @@
                 <RotateTransform Angle="180"/>
             </Image.LayoutTransform>
         </Image>
-        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_left" Grid.Column="1" Grid.Row="3"  ToolTip="Place your tag here">
+        <Image Source="Images/place_your_tag_here.png" Name="Place_tag_left" Grid.Column="1" Grid.Row="3"  ToolTip="Place your tag here" Visibility="Hidden">
             <Image.LayoutTransform>
                 <RotateTransform Angle="90"/>
             </Image.LayoutTransform>

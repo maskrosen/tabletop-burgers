@@ -163,6 +163,15 @@
     <Resource Include="Images\StrawberryDonutsTS.png" />
     <Resource Include="Images\SugerDonutsTS.png" />
     <Resource Include="Images\VanilaCupCakeTS.jpg" />
+    <Resource Include="Images\StrawberyIceCream.png" />
+    <Resource Include="Images\WedgeFries.png" />
+    <Resource Include="Images\Onion.png" />
+    <Resource Include="Images\Carrot2.png" />
+    <Resource Include="Images\HallonSmoothie.png" />
+    <Resource Include="Images\lemonSmootie.png" />
+    <Resource Include="Images\KebabMeat.png" />
+    <Resource Include="Images\SalamonFiletTS.png" />
+    <Resource Include="Images\Water.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
