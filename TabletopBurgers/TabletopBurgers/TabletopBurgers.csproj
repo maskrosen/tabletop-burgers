@@ -182,6 +182,12 @@
     <Resource Include="Images\popcorn.png" />
     <Resource Include="Images\salad.png" />
     <Resource Include="Images\simple-burger.png" />
+    <Resource Include="Images\undo.png" />
+    <Resource Include="Images\clear.png" />
+    <Resource Include="Images\clone_front.png" />
+    <Resource Include="Images\clone_left.png" />
+    <Resource Include="Images\clone_right.png" />
+    <Resource Include="Images\hamicon-09.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -38,6 +38,21 @@ namespace Drag_and_Drop
         private ObservableCollection<PhotoData> scatterItemsRight;
         private ObservableCollection<PhotoData> scatterItemsLeft;
 
+        private ObservableCollection<PhotoData> auxiliarItemsTop;
+        private ObservableCollection<PhotoData> auxiliarItemsBottom;
+        private ObservableCollection<PhotoData> auxiliarItemsRight;
+        private ObservableCollection<PhotoData> auxiliarItemsLeft;
+
+        EventHandler<TouchEventArgs> clear_event_right;
+        EventHandler<TouchEventArgs> clear_event_left;
+        EventHandler<TouchEventArgs> clear_event_up;
+        EventHandler<TouchEventArgs> clear_event_down;
+
+        EventHandler<TouchEventArgs> undo_event_right;
+        EventHandler<TouchEventArgs> undo_event_left;
+        EventHandler<TouchEventArgs> undo_event_up;
+        EventHandler<TouchEventArgs> undo_event_down;
+
         private Dictionary<long, Tag> tagItems;
 
         private double bottomPrice = 0;
@@ -148,6 +163,58 @@ namespace Drag_and_Drop
             }
         }
 
+        public ObservableCollection<PhotoData> AuxiliarItemsLeft
+        {
+            get
+            {
+                if (auxiliarItemsLeft == null)
+                {
+                    auxiliarItemsLeft = new ObservableCollection<PhotoData>();
+                }
+
+                return auxiliarItemsLeft;
+            }
+        }
+
+        public ObservableCollection<PhotoData> AuxiliarItemsRight
+        {
+            get
+            {
+                if (auxiliarItemsRight == null)
+                {
+                    auxiliarItemsRight = new ObservableCollection<PhotoData>();
+                }
+
+                return auxiliarItemsRight;
+            }
+        }
+
+        public ObservableCollection<PhotoData> AuxiliarItemsTop
+        {
+            get
+            {
+                if (auxiliarItemsTop == null)
+                {
+                    auxiliarItemsTop = new ObservableCollection<PhotoData>();
+                }
+
+                return auxiliarItemsTop;
+            }
+        }
+
+        public ObservableCollection<PhotoData> AuxiliarItemsBottom
+        {
+            get
+            {
+                if (auxiliarItemsBottom == null)
+                {
+                    auxiliarItemsBottom = new ObservableCollection<PhotoData>();
+                }
+
+                return auxiliarItemsBottom;
+            }
+        }
+
       
         public ObservableCollection<PhotoData> BurgerItems
         {
@@ -208,6 +275,41 @@ namespace Drag_and_Drop
             Make_menu_up.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_up);
             Make_menu_left.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_left);
             Make_menu_right.TouchDown += new EventHandler<TouchEventArgs>(MakeMenu_TouchDown_right);
+
+            Clonefront_down.TouchDown += new EventHandler<TouchEventArgs>(Clonefront_TouchDown_down);
+            Clonefront_left.TouchDown += new EventHandler<TouchEventArgs>(Clonefront_TouchDown_left);
+            Clonefront_right.TouchDown += new EventHandler<TouchEventArgs>(Clonefront_TouchDown_right);
+            Clonefront_up.TouchDown += new EventHandler<TouchEventArgs>(Clonefront_TouchDown_up);
+
+            Cloneleft_down.TouchDown += new EventHandler<TouchEventArgs>(Cloneleft_TouchDown_down);
+            Cloneleft_left.TouchDown += new EventHandler<TouchEventArgs>(Cloneleft_TouchDown_left);
+            Cloneleft_right.TouchDown += new EventHandler<TouchEventArgs>(Cloneleft_TouchDown_right);
+            Cloneleft_up.TouchDown += new EventHandler<TouchEventArgs>(Cloneleft_TouchDown_up);
+
+            Cloneright_down.TouchDown += new EventHandler<TouchEventArgs>(Cloneright_TouchDown_down);
+            Cloneright_left.TouchDown += new EventHandler<TouchEventArgs>(Cloneright_TouchDown_left);
+            Cloneright_right.TouchDown += new EventHandler<TouchEventArgs>(Cloneright_TouchDown_right);
+            Cloneright_up.TouchDown += new EventHandler<TouchEventArgs>(Cloneright_TouchDown_up); 
+
+            clear_event_right= new EventHandler<TouchEventArgs>(Clear_TouchDown_right);
+            clear_event_left = new EventHandler<TouchEventArgs>(Clear_TouchDown_left);
+            clear_event_up = new EventHandler<TouchEventArgs>(Clear_TouchDown_up);
+            clear_event_down = new EventHandler<TouchEventArgs>(Clear_TouchDown_down);
+
+            Clear_right.TouchDown += clear_event_right;
+            Clear_up.TouchDown += clear_event_up;
+            Clear_down.TouchDown += clear_event_down;
+            Clear_left.TouchDown += clear_event_left;
+
+            undo_event_right = new EventHandler<TouchEventArgs>(Undo_TouchDown_right);
+            undo_event_left = new EventHandler<TouchEventArgs>(Undo_TouchDown_left);
+            undo_event_up = new EventHandler<TouchEventArgs>(Undo_TouchDown_up);
+            undo_event_down = new EventHandler<TouchEventArgs>(Undo_TouchDown_down);
+
+            auxiliarItemsLeft = new ObservableCollection<PhotoData>();
+            auxiliarItemsRight = new ObservableCollection<PhotoData>();
+            auxiliarItemsTop = new ObservableCollection<PhotoData>();
+            auxiliarItemsBottom = new ObservableCollection<PhotoData>();
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -215,83 +317,83 @@ namespace Drag_and_Drop
             base.OnInitialized(e);
             DataContext = this;
 
-            LibraryItemsLeft.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/BrawnBreadTS.png", "Bottom Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/BrawonBreadTS.png", "Top Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/BreadWithSemsonTS.png", "Bottom Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/TopBreadWithSemsonTS.png", "Top Bread", 10));
-            LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseTS.png", "French Fries", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseWithMeat.png", "French Fries with meat", 20));
-            LibraryItemsLeft.Add(new PhotoData("Images/OnionFries.png", "Onion Rings", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/onion-thing.png", "Onion Rings 2", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/WedgeFries.png", "Wedge Fries", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/nachos.png", "Nachos", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/popcorn.png", "Popcorn", 15));
-            LibraryItemsLeft.Add(new PhotoData("Images/pizza.png", "Pizza", 55));
-            LibraryItemsLeft.Add(new PhotoData("Images/breakfast.png", "Breakfast", 35));
-            LibraryItemsLeft.Add(new PhotoData("Images/pancakes2.png", "Breakfast", 35));
+            LibraryItemsLeft.Add(new PhotoData("Images/BottomBreadTS.png", "Bottom Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/TopBreadTS.png", "Top Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/BrawnBreadTS.png", "Bottom Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/BrawonBreadTS.png", "Top Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/BreadWithSemsonTS.png", "Bottom Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/TopBreadWithSemsonTS.png", "Top Bread", 10, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseTS.png", "French Fries", 1, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/FrenchFriseWithMeat.png", "French Fries with meat", 20, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/OnionFries.png", "Onion Rings", 15, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/onion-thing.png", "Onion Rings 2", 15, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/WedgeFries.png", "Wedge Fries", 15, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/nachos.png", "Nachos", 15, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/popcorn.png", "Popcorn", 15, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/pizza.png", "Pizza", 55, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/breakfast.png", "Breakfast", 35, 90));
+            LibraryItemsLeft.Add(new PhotoData("Images/pancakes2.png", "Breakfast", 35, 90));
 
-            LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5));
-            LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3));
-            LibraryItemsBottom.Add(new PhotoData("Images/LuttesTS.png", "Lettuce", 2));
-            LibraryItemsBottom.Add(new PhotoData("Images/OnionTS.png", "Onions", 3));
-            LibraryItemsBottom.Add(new PhotoData("Images/Onion.png", "Onions 2", 3));
-            LibraryItemsBottom.Add(new PhotoData("Images/MashroomTS.png", "Mushroom", 3));
-            LibraryItemsBottom.Add(new PhotoData("Images/OlivesTS.png", "Olives", 5));
-            LibraryItemsBottom.Add(new PhotoData("Images/PepearTS.png", "Bell pepper", 5));
-            LibraryItemsBottom.Add(new PhotoData("Images/carrot.png", "Carrot", 4));
-            LibraryItemsBottom.Add(new PhotoData("Images/carrot2.png", "Carrot 2", 4));
-            LibraryItemsBottom.Add(new PhotoData("Images/CeaserSalaTS.png", "Ceasar Salad", 70));
-            LibraryItemsBottom.Add(new PhotoData("Images/FruitSaladTS.png", "Fruit Salad", 70));
-            LibraryItemsBottom.Add(new PhotoData("Images/GreekSaladTS.png", "Greek Salad", 70));
-            LibraryItemsBottom.Add(new PhotoData("Images/shrimpSaladTS.png", "Shrimp Salad", 70));
-            LibraryItemsBottom.Add(new PhotoData("Images/salad.png", "Salad", 40));
-            LibraryItemsBottom.Add(new PhotoData("Images/cabbage.png", "Cabbage", 4));
-            LibraryItemsBottom.Add(new PhotoData("Images/ovocadoSlice.png", "Avocado", 4));
-            LibraryItemsBottom.Add(new PhotoData("Images/papper.png", "Bell pepper", 4));
-            LibraryItemsBottom.Add(new PhotoData("Images/SpiceTS.png", "Pickles", 4));
+            LibraryItemsBottom.Add(new PhotoData("Images/CucumberTS.png", "Cucumber", 5, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/TomatoSliceTS.png", "Tomato", 3, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/LuttesTS.png", "Lettuce", 2, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/OnionTS.png", "Onions", 3, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/Onion.png", "Onions 2", 3, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/MashroomTS.png", "Mushroom", 3, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/OlivesTS.png", "Olives", 5, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/PepearTS.png", "Bell pepper", 5, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/carrot.png", "Carrot", 4, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/carrot2.png", "Carrot 2", 4, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/CeaserSalaTS.png", "Ceasar Salad", 70, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/FruitSaladTS.png", "Fruit Salad", 70, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/GreekSaladTS.png", "Greek Salad", 70, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/shrimpSaladTS.png", "Shrimp Salad", 70, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/salad.png", "Salad", 40, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/cabbage.png", "Cabbage", 4, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/ovocadoSlice.png", "Avocado", 4, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/papper.png", "Bell pepper", 4, 0));
+            LibraryItemsBottom.Add(new PhotoData("Images/SpiceTS.png", "Pickles", 4, 0));
 
-            LibraryItemsTop.Add(new PhotoData("Images/BlueDountsTS.png", "Blue Dounts", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/StrawberryDonutsTS.png", "Strawberry Dounts", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/ChocoDounts.png", "Chocolate Donut", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/SugerDonutsTS.png", "Sugar Donut", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/CreamDountsTS.png", "Cream Donut", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/CaffeLatteTS.png", "Latte", 15));
-            LibraryItemsTop.Add(new PhotoData("Images/CaffeeTS.png", "Coffee", 15));
-            LibraryItemsTop.Add(new PhotoData("Images/chooIceCreamTS.png", "Chocolate ice cream", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/PistasioIcecreamTS.png", "Pistasio ice cream", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/StrawberyIceCream.png", "Strawberry ice cream", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/CinamonTS.png", "Cinnamon roll", 15));
-            LibraryItemsTop.Add(new PhotoData("Images/cookies.png", "Cookie", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/CupCake3TS.png", "Cupcake", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/GreenMuffenTS.png", "Muffin", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/cheesecake.png", "Cheesecake", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/chocolate.png", "Chocolate", 10));
-            LibraryItemsTop.Add(new PhotoData("Images/Beer.png", "Beer", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/PEPSITS.png", "Pepsi", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/FantaTS.png", "Fanta", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/SpriteTS.png", "Sprite", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/OrangeTS.png", "Orange Juice", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/HallonSmoothie.png", "Hallon Smoothie", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/lemonSmootie.png", "Lemon Smoothie", 20));
-            LibraryItemsTop.Add(new PhotoData("Images/Water.png", "Water", 20));
+            LibraryItemsTop.Add(new PhotoData("Images/BlueDountsTS.png", "Blue Dounts", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/StrawberryDonutsTS.png", "Strawberry Dounts", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/ChocoDounts.png", "Chocolate Donut", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/SugerDonutsTS.png", "Sugar Donut", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/CreamDountsTS.png", "Cream Donut", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/CaffeLatteTS.png", "Latte", 15, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/CaffeeTS.png", "Coffee", 15, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/chooIceCreamTS.png", "Chocolate ice cream", 10, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/PistasioIcecreamTS.png", "Pistasio ice cream", 10, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/StrawberyIceCream.png", "Strawberry ice cream", 10, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/CinamonTS.png", "Cinnamon roll", 15, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/cookies.png", "Cookie", 10, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/CupCake3TS.png", "Cupcake", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/GreenMuffenTS.png", "Muffin", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/cheesecake.png", "Cheesecake", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/chocolate.png", "Chocolate", 10, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/Beer.png", "Beer", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/PEPSITS.png", "Pepsi", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/FantaTS.png", "Fanta", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/SpriteTS.png", "Sprite", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/OrangeTS.png", "Orange Juice", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/HallonSmoothie.png", "Hallon Smoothie", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/lemonSmootie.png", "Lemon Smoothie", 20, 180));
+            LibraryItemsTop.Add(new PhotoData("Images/Water.png", "Water", 20, 180));
 
-            LibraryItemsRight.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25));
-            LibraryItemsRight.Add(new PhotoData("Images/EggTS.png", "Egg    ", 10));
-            LibraryItemsRight.Add(new PhotoData("Images/Egg.png", "Egg 2   ", 10));
-            LibraryItemsRight.Add(new PhotoData("Images/BaconTS.png", "Bacon    ", 10));
-            LibraryItemsRight.Add(new PhotoData("Images/CheckenBoxTS.png", "Fried Chicken", 40));
-            LibraryItemsRight.Add(new PhotoData("Images/CheckenFilletTS.png", "Chicken Fillet", 30));
-            LibraryItemsRight.Add(new PhotoData("Images/CheckenNuggetsTS.png", "Chicken Nuggets", 40));
-            LibraryItemsRight.Add(new PhotoData("Images/DobleCheeseTS.png", "Double Cheese", 7));
-            LibraryItemsRight.Add(new PhotoData("Images/CHesseTS.png", "Cheese", 7));
-            LibraryItemsRight.Add(new PhotoData("Images/Ketchup.png", "Ketchup", 1));
-            LibraryItemsRight.Add(new PhotoData("Images/SauceTS.png", "Sauce", 1));
-            LibraryItemsRight.Add(new PhotoData("Images/HotDogTS.png", "Hot Dog", 30));
-            LibraryItemsRight.Add(new PhotoData("Images/ShrimpTS.png", "Shrimps", 30));
-            LibraryItemsRight.Add(new PhotoData("Images/KebabMeat.png", "Kebab meat", 20));
-            LibraryItemsRight.Add(new PhotoData("Images/SalamonFiletTS.png", "Salmon Fillet", 25));
+            LibraryItemsRight.Add(new PhotoData("Images/DoubleMeetTS.png", "Meat", 25, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/EggTS.png", "Egg    ", 10, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/Egg.png", "Egg 2   ", 10, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/BaconTS.png", "Bacon    ", 10, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/CheckenBoxTS.png", "Fried Chicken", 40, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/CheckenFilletTS.png", "Chicken Fillet", 30, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/CheckenNuggetsTS.png", "Chicken Nuggets", 40, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/DobleCheeseTS.png", "Double Cheese", 7, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/CHesseTS.png", "Cheese", 7, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/Ketchup.png", "Ketchup", 1, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/SauceTS.png", "Sauce", 1, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/HotDogTS.png", "Hot Dog", 30, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/ShrimpTS.png", "Shrimps", 30, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/KebabMeat.png", "Kebab meat", 20, 270));
+            LibraryItemsRight.Add(new PhotoData("Images/SalamonFiletTS.png", "Salmon Fillet", 25, 270));
 
             TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
             TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));
@@ -300,12 +402,13 @@ namespace Drag_and_Drop
             TagItems.Add(5, new Tag(5, 501, "Malmö", new DateTime(2015, 5, 20, 11, 22, 0), -1, false, -1));
             TagItems.Add(6, new Tag(6, 2453, "Jönköping", new DateTime(2015, 5, 20, 12, 03, 0), 12, true, 10));
 
-            BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70));
-            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 67));
-            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 62));
-            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 75));
-            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 80));
-            BurgerItems.Add(new PhotoData("Images/simple-burger.png", "Basic burger", 50));
+            BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70, 0));
+            BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 67, 270));
+            BurgerItems.Add(new PhotoData("Images/Burger3.png", "Ready from the kitchen", 62, 180));
+            BurgerItems.Add(new PhotoData("Images/Burger4.png", "Grilled texan", 75, 90));
+            BurgerItems.Add(new PhotoData("Images/FinalBurgerTS.png", "Deluxe cheddar", 80, 0));
+            BurgerItems.Add(new PhotoData("Images/simple-burger.png", "Basic burger", 50, 90));
+            BurgerItems.Add(new PhotoData("Images/hamicon-09.png", "Basic burger", 45, 180));
 
         }
 
@@ -442,24 +545,28 @@ namespace Drag_and_Drop
             {
                 bottomPrice -= data.Price;
                 Price_label_down.Text = "Price " + bottomPrice;
+                ScatterItemsBottom.Remove(data);
             }
 
             if (e.Cursor.DragSource == scatterTop)
             {
                 topPrice -= data.Price;
                 Price_label_up.Text = "Price " + topPrice;
+                ScatterItemsTop.Remove(data);
             }
 
             if (e.Cursor.DragSource == scatterLeft)
             {
                 leftPrice -= data.Price;
                 Price_label_left.Text = "Price " + leftPrice;
+                ScatterItemsLeft.Remove(data);
             }
 
             if (e.Cursor.DragSource == scatterRight)
             {
                 rightPrice -= data.Price;
                 Price_label_right.Text = "Price " + rightPrice;
+                ScatterItemsRight.Remove(data);
             }
         }
 
@@ -470,34 +577,39 @@ namespace Drag_and_Drop
                 e.Handled = true;
                
             }
+            PhotoData data = (e.Cursor.Data as PhotoData);
 
             if ((e.Cursor.DragSource == scatterBottom && e.Cursor.CurrentTarget != scatterBottom && e.Cursor.Effects == DragDropEffects.Move))
             {
-                bottomPrice -= (e.Cursor.Data as PhotoData).Price;
+                bottomPrice -= data.Price;
                 Price_label_down.Text = "Price " + bottomPrice;
+                ScatterItemsBottom.Remove(data);
             }
 
             if ((e.Cursor.DragSource == scatterTop && e.Cursor.CurrentTarget != scatterTop && e.Cursor.Effects == DragDropEffects.Move))
             {
-                topPrice -= (e.Cursor.Data as PhotoData).Price;
+                topPrice -= data.Price;
                 Price_label_up.Text = "Price " + topPrice;
+                ScatterItemsTop.Remove(data);
             }
             if ((e.Cursor.DragSource == scatterLeft && e.Cursor.CurrentTarget != scatterLeft && e.Cursor.Effects == DragDropEffects.Move))
             {
-                leftPrice -= (e.Cursor.Data as PhotoData).Price;
+                leftPrice -= data.Price;
                 Price_label_left.Text = "Price " + leftPrice;
+                ScatterItemsLeft.Remove(data);
             }
             if ((e.Cursor.DragSource == scatterRight && e.Cursor.CurrentTarget != scatterRight && e.Cursor.Effects == DragDropEffects.Move))
             {
-                rightPrice -= (e.Cursor.Data as PhotoData).Price;
+                rightPrice -= data.Price;
                 Price_label_right.Text = "Price " + rightPrice;
+                ScatterItemsRight.Remove(data);
             }
         }
 
         private void Scatter_Drop(object sender, SurfaceDragDropEventArgs e)
         {
             PhotoData photo=(PhotoData)e.Cursor.Data;
-            PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption, photo.Price);
+            PhotoData clonedPhoto=new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
 
              ScatterViewItem svi;
             if (e.Cursor.CurrentTarget == scatterBottom)
@@ -513,6 +625,15 @@ namespace Drag_and_Drop
                     Price_label_down.Visibility = Visibility.Visible;
                     Price_label_down.Text = "Price " + bottomPrice;
                 }
+                ScatterItemsBottom.Remove(photo);
+
+                while (auxiliarItemsBottom.Count() > 0)
+                {
+                    auxiliarItemsBottom.RemoveAt(0);
+                }
+                Clear_down.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+                Clear_down.TouchDown -= undo_event_down;
+                Clear_down.TouchDown += clear_event_down;
 
             }
             else if (e.Cursor.CurrentTarget == scatterTop)
@@ -528,6 +649,14 @@ namespace Drag_and_Drop
                     Price_label_up.Visibility = Visibility.Visible;
                     Price_label_up.Text = "Price " + topPrice;
                 }
+                ScatterItemsTop.Remove(photo);
+                while (auxiliarItemsTop.Count() > 0)
+                {
+                    auxiliarItemsTop.RemoveAt(0);
+                }
+                Clear_up.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+                Clear_up.TouchDown -= undo_event_up;
+                Clear_up.TouchDown += clear_event_up;
             }
             else if (e.Cursor.CurrentTarget == scatterLeft)
             {
@@ -542,7 +671,14 @@ namespace Drag_and_Drop
                     Price_label_left.Visibility = Visibility.Visible;
                     Price_label_left.Text = "Price " + leftPrice;
                 }
-
+                ScatterItemsLeft.Remove(photo);
+                while (auxiliarItemsLeft.Count() > 0)
+                {
+                    auxiliarItemsLeft.RemoveAt(0);
+                }
+                Clear_left.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+                Clear_left.TouchDown -= undo_event_left;
+                Clear_left.TouchDown += clear_event_left;
             }
             else 
             {
@@ -557,6 +693,14 @@ namespace Drag_and_Drop
                     Price_label_right.Visibility = Visibility.Visible;
                     Price_label_right.Text = "Price " + rightPrice;
                 }
+                ScatterItemsRight.Remove(photo);
+                while (auxiliarItemsRight.Count() > 0)
+                {
+                    auxiliarItemsRight.RemoveAt(0);
+                }
+                Clear_right.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+                Clear_right.TouchDown -= undo_event_right;
+                Clear_right.TouchDown += clear_event_right;
             }
 
             // Get the ScatterViewItem that Scatter automatically generated.
@@ -686,10 +830,16 @@ namespace Drag_and_Drop
                     }
                     else
                     {
+                        String track = "not announced";
+                        if (tag.track != -1)
+                        {
+                            track = tag.track.ToString();
+                        }
                         scatterLeft.Visibility = Visibility.Visible;
                         Train_label_left.Visibility = Visibility.Visible;
-                        Train_label_left.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                        Make_menu_left.Visibility = Visibility.Visible;
+                        Train_label_left.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + track;
+                        LeftStack_left.Visibility = Visibility.Visible;
+                        RightStack_left.Visibility = Visibility.Visible;
 
                     }
                 }
@@ -725,10 +875,16 @@ namespace Drag_and_Drop
                     }
                     else
                     {
+                        String track = "not announced";
+                        if (tag.track != -1)
+                        {
+                            track = tag.track.ToString();
+                        }
                         scatterBottom.Visibility = Visibility.Visible;
                         Train_label_down.Visibility = Visibility.Visible;
-                        Train_label_down.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                        Make_menu_down.Visibility = Visibility.Visible;
+                        Train_label_down.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + track;
+                        LeftStack_down.Visibility = Visibility.Visible;
+                        RightStack_down.Visibility = Visibility.Visible;
                     }
                 }
             }
@@ -763,10 +919,16 @@ namespace Drag_and_Drop
                     }
                     else
                     {
+                        String track = "not announced";
+                        if (tag.track != -1)
+                        {
+                            track = tag.track.ToString();
+                        }
                         scatterTop.Visibility = Visibility.Visible;
                         Train_label_up.Visibility = Visibility.Visible;
-                        Train_label_up.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                        Make_menu_up.Visibility = Visibility.Visible;
+                        Train_label_up.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + track;
+                        LeftStack_up.Visibility = Visibility.Visible;
+                        RightStack_up.Visibility = Visibility.Visible;
                     }
                 }
             }
@@ -802,10 +964,16 @@ namespace Drag_and_Drop
                     }
                     else
                     {
+                        String track = "not announced";
+                        if (tag.track != -1)
+                        {
+                            track = tag.track.ToString();
+                        }
                         scatterRight.Visibility = Visibility.Visible;
                         Train_label_right.Visibility = Visibility.Visible;
-                        Train_label_right.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + tag.track;
-                        Make_menu_right.Visibility = Visibility.Visible;
+                        Train_label_right.Text = "Train " + tag.trainNumber + " to " + tag.destination + " " + tag.time + " track " + track;
+                        LeftStack_right.Visibility = Visibility.Visible;
+                        RightStack_right.Visibility = Visibility.Visible;
                     }
                 }
             }
@@ -820,7 +988,8 @@ namespace Drag_and_Drop
                 scatterRight.Visibility = Visibility.Collapsed;
                 Place_tag_right.Visibility = Visibility.Visible;
                 Train_label_right.Visibility = Visibility.Hidden;
-                Make_menu_right.Visibility = Visibility.Hidden;
+                LeftStack_right.Visibility = Visibility.Hidden;
+                RightStack_right.Visibility = Visibility.Hidden;
                 Price_label_right.Visibility = Visibility.Hidden;
             }
         }
@@ -834,7 +1003,8 @@ namespace Drag_and_Drop
                 scatterLeft.Visibility = Visibility.Collapsed;
                 Place_tag_left.Visibility = Visibility.Visible;
                 Train_label_left.Visibility = Visibility.Hidden;
-                Make_menu_left.Visibility = Visibility.Hidden;
+                LeftStack_left.Visibility = Visibility.Hidden;
+                RightStack_left.Visibility = Visibility.Hidden;
                 Price_label_left.Visibility = Visibility.Hidden;
             }
         }
@@ -848,7 +1018,8 @@ namespace Drag_and_Drop
                 scatterTop.Visibility = Visibility.Collapsed;
                 Place_tag_up.Visibility = Visibility.Visible;
                 Train_label_up.Visibility = Visibility.Hidden;
-                Make_menu_up.Visibility = Visibility.Hidden;
+                LeftStack_up.Visibility = Visibility.Hidden;
+                RightStack_up.Visibility = Visibility.Hidden;
                 Price_label_up.Visibility = Visibility.Hidden;
             }
         }
@@ -862,7 +1033,8 @@ namespace Drag_and_Drop
                 scatterBottom.Visibility = Visibility.Collapsed;
                 Place_tag_down.Visibility = Visibility.Visible;
                 Train_label_down.Visibility = Visibility.Hidden;
-                Make_menu_down.Visibility = Visibility.Hidden;
+                LeftStack_down.Visibility = Visibility.Hidden;
+                RightStack_down.Visibility = Visibility.Hidden;
                 Price_label_down.Visibility = Visibility.Hidden;
             }
         }
@@ -913,9 +1085,16 @@ namespace Drag_and_Drop
         }
         void MakeMenu_TouchDown_down(object sender, TouchEventArgs e)
         {
+            while (auxiliarItemsBottom.Count() > 0)
+            {
+                auxiliarItemsBottom.RemoveAt(0);
+            }
+            Clear_down.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_down.TouchDown -= undo_event_down;
+            Clear_down.TouchDown += clear_event_down;
             //Add fries and coke to the down scatterview
-            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
-            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15, 90);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20, 180);
 
             //Add to total price!
             bottomPrice += 35;
@@ -951,9 +1130,16 @@ namespace Drag_and_Drop
 
         void MakeMenu_TouchDown_up(object sender, TouchEventArgs e)
         {
+            while (auxiliarItemsTop.Count() > 0)
+            {
+                auxiliarItemsTop.RemoveAt(0);
+            }
+            Clear_up.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_up.TouchDown -= undo_event_up;
+            Clear_up.TouchDown += clear_event_up;
             //Add fries and coke to the down scatterview
-            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
-            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15, 90);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20, 180);
 
             //Add to total price!
             topPrice += 35;
@@ -990,9 +1176,17 @@ namespace Drag_and_Drop
 
         void MakeMenu_TouchDown_left(object sender, TouchEventArgs e)
         {
+            while (auxiliarItemsLeft.Count() > 0)
+            {
+                auxiliarItemsLeft.RemoveAt(0);
+            }
+            Clear_left.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_left.TouchDown -= undo_event_left;
+            Clear_left.TouchDown += clear_event_left;
+
             //Add fries and coke to the down scatterview
-            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
-            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15, 90);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20, 180);
 
             //Add to total price!
 
@@ -1030,9 +1224,17 @@ namespace Drag_and_Drop
 
         void MakeMenu_TouchDown_right(object sender, TouchEventArgs e)
         {
+            while (auxiliarItemsRight.Count() > 0)
+            {
+                auxiliarItemsRight.RemoveAt(0);
+            }
+            Clear_right.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_right.TouchDown -= undo_event_right;
+            Clear_right.TouchDown += clear_event_right;
+
             //Add fries and coke to the down scatterview
-            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15);
-            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20);
+            PhotoData friesPhoto = new PhotoData("Images/FrenchFriseTS.png", "Fries", 15, 90);
+            PhotoData drinkPhoto = new PhotoData("Images/PEPSITS.png", "Pepsi", 20, 180);
 
             //Add to total price!
 
@@ -1067,5 +1269,480 @@ namespace Drag_and_Drop
             svi2.Loaded += loadedEventHandler;
         }
 
+        void Clear_TouchDown_up(object sender, TouchEventArgs e)
+        {
+            while (ScatterItemsTop.Count() > 0)
+            {  
+                auxiliarItemsTop.Add(ScatterItemsTop.First());
+                ScatterItemsTop.RemoveAt(0);
+            }
+            topPrice = 0;
+            Price_label_up.Text = "Price " + topPrice;
+            Clear_up.Source = new BitmapImage(new Uri("Images/undo.png", UriKind.Relative));
+            Clear_up.TouchDown -= clear_event_up;
+            Clear_up.TouchDown += undo_event_up;
+        }
+
+        void Clear_TouchDown_down(object sender, TouchEventArgs e)
+        {
+            while (ScatterItemsBottom.Count() > 0)
+            {
+                auxiliarItemsBottom.Add(ScatterItemsBottom.First());
+                ScatterItemsBottom.RemoveAt(0);
+            }
+            bottomPrice = 0;
+            Price_label_down.Text = "Price " + bottomPrice;
+            Clear_down.Source = new BitmapImage(new Uri("Images/undo.png", UriKind.Relative));
+            Clear_down.TouchDown -= clear_event_down;
+            Clear_down.TouchDown += undo_event_down;
+        }
+
+        void Clear_TouchDown_right(object sender, TouchEventArgs e)
+        {
+            while (ScatterItemsRight.Count() > 0)
+            {
+                auxiliarItemsRight.Add(ScatterItemsRight.First());
+                ScatterItemsRight.RemoveAt(0);
+            }
+            rightPrice = 0;
+            Price_label_right.Text = "Price " + rightPrice;
+            Clear_right.Source = new BitmapImage(new Uri("Images/undo.png", UriKind.Relative));
+            Clear_right.TouchDown -= clear_event_right;
+            Clear_right.TouchDown += undo_event_right;
+        }
+
+        void Clear_TouchDown_left(object sender, TouchEventArgs e)
+        {
+            while (ScatterItemsLeft.Count() > 0)
+            {
+                auxiliarItemsLeft.Add(ScatterItemsLeft.First());
+                ScatterItemsLeft.RemoveAt(0);
+            }
+            leftPrice = 0;
+            Price_label_left.Text = "Price " + leftPrice;
+            Clear_left.Source = new BitmapImage(new Uri("Images/undo.png", UriKind.Relative));
+            Clear_left.TouchDown -= clear_event_left;
+            Clear_left.TouchDown += undo_event_left;
+        }
+
+        void Undo_TouchDown_left(object sender, TouchEventArgs e)
+        {
+            Clear_left.TouchDown -= undo_event_left;
+            for (int i = 0; i < AuxiliarItemsLeft.Count(); i++)
+            {
+                PhotoData data = auxiliarItemsLeft.ElementAt(i);
+                scatterItemsLeft.Add(data);
+                ScatterViewItem svi = scatterLeft.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+                svi.Orientation = (90 - data.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+
+            while (auxiliarItemsLeft.Count() > 0)
+            {
+                auxiliarItemsLeft.RemoveAt(0);
+            }
+
+            leftPrice = 0;
+            for (int i = 0; i < scatterItemsLeft.Count(); i++)
+            {
+                leftPrice += scatterItemsLeft.ElementAt(i).Price;
+            }
+            Price_label_left.Text = "Price " + leftPrice;
+            Clear_left.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_left.TouchDown += clear_event_left;
+        }
+
+        void Undo_TouchDown_right(object sender, TouchEventArgs e)
+        {
+            Clear_right.TouchDown -= undo_event_right;
+            for (int i = 0; i < AuxiliarItemsRight.Count(); i++)
+            {
+                PhotoData data = auxiliarItemsRight.ElementAt(i);
+                scatterItemsRight.Add(data);
+                ScatterViewItem svi = scatterRight.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+                svi.Orientation = (270 - data.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+            while (auxiliarItemsRight.Count() > 0)
+            {
+                auxiliarItemsRight.RemoveAt(0);
+            }
+
+            rightPrice = 0;
+            for (int i = 0; i < scatterItemsRight.Count(); i++)
+            {
+                rightPrice += scatterItemsRight.ElementAt(i).Price;
+            }
+            Price_label_right.Text = "Price " + rightPrice;
+            Clear_right.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_right.TouchDown += clear_event_right;
+        }
+
+        void Undo_TouchDown_up(object sender, TouchEventArgs e)
+        {
+            Clear_up.TouchDown -= undo_event_up;
+
+            for (int i = 0; i < AuxiliarItemsTop.Count(); i++)
+            {
+                PhotoData data = auxiliarItemsTop.ElementAt(i);
+                scatterItemsTop.Add(data);
+                ScatterViewItem svi = scatterTop.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+                svi.Orientation = (180 - data.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+            while (auxiliarItemsTop.Count() > 0)
+            {
+                auxiliarItemsTop.RemoveAt(0);
+            }
+
+            topPrice = 0;
+            for (int i = 0; i < scatterItemsTop.Count(); i++)
+            {
+                topPrice += scatterItemsTop.ElementAt(i).Price;
+            }
+            Price_label_up.Text = "Price " + topPrice;
+            Clear_up.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_up.TouchDown += clear_event_up;
+        }
+
+        void Undo_TouchDown_down(object sender, TouchEventArgs e)
+        {
+            Clear_down.TouchDown -= undo_event_down;
+
+            for (int i = 0; i < AuxiliarItemsBottom.Count(); i++)
+            {
+                PhotoData data = auxiliarItemsBottom.ElementAt(i);
+                scatterItemsBottom.Add(data);
+                ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(data) as ScatterViewItem;
+                svi.Orientation = (360 - data.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+            while (auxiliarItemsBottom.Count() > 0)
+            {
+                auxiliarItemsBottom.RemoveAt(0);
+            }
+
+            bottomPrice = 0;
+            for (int i = 0; i < scatterItemsBottom.Count(); i++)
+            {
+                bottomPrice += scatterItemsBottom.ElementAt(i).Price;
+            }
+            Price_label_down.Text = "Price " + bottomPrice;
+            Clear_down.Source = new BitmapImage(new Uri("Images/clear.png", UriKind.Relative));
+            Clear_down.TouchDown += clear_event_down;
+        }
+
+        void Clonefront_TouchDown_down(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsTop.Count(); i++ )
+            {
+                PhotoData photo = ScatterItemsTop.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsBottom.Add(clonedPhoto);
+                ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (360 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Clonefront_TouchDown_up(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsBottom.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsBottom.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsTop.Add(clonedPhoto);
+                ScatterViewItem svi = scatterTop.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (180 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Clonefront_TouchDown_right(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsLeft.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsLeft.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsRight.Add(clonedPhoto);
+                ScatterViewItem svi = scatterRight.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (270 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Clonefront_TouchDown_left(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsRight.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsRight.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsLeft.Add(clonedPhoto);
+                ScatterViewItem svi = scatterLeft.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (90 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        
+        void Cloneright_TouchDown_up(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsLeft.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsLeft.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsTop.Add(clonedPhoto);
+                ScatterViewItem svi = scatterTop.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (360 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneright_TouchDown_down(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsRight.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsRight.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsBottom.Add(clonedPhoto);
+                ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (360 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneright_TouchDown_right(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsTop.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsTop.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsRight.Add(clonedPhoto);
+                ScatterViewItem svi = scatterRight.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (270 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneright_TouchDown_left(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsBottom.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsBottom.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsLeft.Add(clonedPhoto);
+                ScatterViewItem svi = scatterLeft.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (90 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneleft_TouchDown_up(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsRight.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsRight.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsTop.Add(clonedPhoto);
+                ScatterViewItem svi = scatterTop.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (180 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneleft_TouchDown_down(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsLeft.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsLeft.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsBottom.Add(clonedPhoto);
+                ScatterViewItem svi = scatterBottom.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (360 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneleft_TouchDown_right(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsBottom.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsBottom.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsRight.Add(clonedPhoto);
+                ScatterViewItem svi = scatterRight.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (270 - photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
+
+        void Cloneleft_TouchDown_left(object sender, TouchEventArgs e)
+        {
+
+            for (int i = 0; i < ScatterItemsTop.Count(); i++)
+            {
+                PhotoData photo = ScatterItemsTop.ElementAt(i);
+                PhotoData clonedPhoto = new PhotoData(photo.Source, photo.Caption, photo.Price, photo.Angle);
+                ScatterItemsLeft.Add(clonedPhoto);
+                ScatterViewItem svi = scatterLeft.ItemContainerGenerator.ContainerFromItem(clonedPhoto) as ScatterViewItem;
+                svi.Orientation = (90-photo.Angle) % 360;
+                svi.Background = Brushes.Transparent;
+                RoutedEventHandler loadedEventHandler = null;
+                loadedEventHandler = new RoutedEventHandler(delegate
+                {
+                    svi.Loaded -= loadedEventHandler;
+                    Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+                    ssc = svi.Template.FindName("shadow", svi) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+                    ssc.Visibility = Visibility.Hidden;
+                });
+                svi.Loaded += loadedEventHandler;
+            }
+        }
     }
 }

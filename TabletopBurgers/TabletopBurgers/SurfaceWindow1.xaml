@@ -65,9 +65,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
             <ColumnDefinition Width="1.5*" />
-            <ColumnDefinition Width=".6*" />
+            <ColumnDefinition Width=".5*" />
             <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width=".6*" />
+            <ColumnDefinition Width=".5*" />
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
@@ -274,27 +274,134 @@
             </Image.LayoutTransform>
         </Image>
 
-        <!-- "Make menu" buttons-->
-        <Image Source="Images/make_menu.png" Name="Make_menu_right" Grid.Column="5" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
-            <Image.LayoutTransform>
-                <RotateTransform Angle="270"/>
-            </Image.LayoutTransform>
-        </Image>
-        <Image Source="Images/make_menu.png" Name="Make_menu_up" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
-            <Image.LayoutTransform>
-                <RotateTransform Angle="180"/>
-            </Image.LayoutTransform>
-        </Image>
-        <Image Source="Images/make_menu.png" Name="Make_menu_left" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
-            <Image.LayoutTransform>
-                <RotateTransform Angle="90"/>
-            </Image.LayoutTransform>
-        </Image>
-        <Image Source="Images/make_menu.png" Name="Make_menu_down" Grid.Column="3" Grid.Row="4"  Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" MaxWidth="50" MaxHeight="50" Opacity="0.7" Visibility="Hidden">
-            <Image.LayoutTransform>
-                <RotateTransform Angle="0"/>
-            </Image.LayoutTransform>
-        </Image>
+        
+        <!-- Left stack panels: "Make menu" and clear buttons-->
+        <StackPanel Name="LeftStack_right" Orientation="Horizontal" Grid.Column="5" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Visibility="Hidden">
+            <Image Source="Images/clear.png" Name="Clear_right"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/make_menu.png" Name="Make_menu_right"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="LeftStack_up" Orientation="Vertical" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Hidden">
+            <Image Source="Images/clear.png" Name="Clear_up"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/make_menu.png" Name="Make_menu_up"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="LeftStack_left" Orientation="Horizontal" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden">
+            <Image Source="Images/clear.png" Name="Clear_left"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/make_menu.png" Name="Make_menu_left"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="LeftStack_down" Orientation="Vertical" Grid.Column="3" Grid.Row="4"  Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Visibility="Hidden">
+            <Image Source="Images/clear.png" Name="Clear_down"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/make_menu.png" Name="Make_menu_down"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <!-- Right stack panel: Cloning buttons-->
+        <StackPanel Name="RightStack_right" Orientation="Horizontal" Grid.Column="5" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Hidden">
+            <Image Source="Images/clone_front.png" Name="Clonefront_right"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_left.png" Name="Cloneleft_right"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_right.png" Name="Cloneright_right"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="RightStack_left" Orientation="Horizontal" Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Visibility="Hidden">
+            <Image Source="Images/clone_front.png" Name="Clonefront_left"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_left.png" Name="Cloneleft_left"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_right.png" Name="Cloneright_left"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="RightStack_up" Orientation="Vertical" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden">
+            <Image Source="Images/clone_front.png" Name="Clonefront_up"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_left.png" Name="Cloneleft_up"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_right.png" Name="Cloneright_up"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+        <StackPanel Name="RightStack_down" Orientation="Vertical" Grid.Column="3" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Visibility="Hidden">
+            <Image Source="Images/clone_front.png" Name="Clonefront_down"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_left.png" Name="Cloneleft_down"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.LayoutTransform>
+            </Image>
+            <Image Source="Images/clone_right.png" Name="Cloneright_down"  MaxWidth="50" MaxHeight="50" Opacity="0.7">
+                <Image.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.LayoutTransform>
+            </Image>
+        </StackPanel>
+
+
 
         <!--- Train info labels -->
         <TextBlock Name="Train_label_right" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Black" Visibility="Hidden">
