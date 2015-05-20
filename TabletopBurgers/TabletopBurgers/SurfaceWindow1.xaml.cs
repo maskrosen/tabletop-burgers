@@ -431,7 +431,7 @@ namespace Drag_and_Drop
 
             // Hide the ScatterViewItem for now. We will remove it if the DragDrop is successful.
             draggedElement.Visibility = Visibility.Hidden;
-          
+
         }
 
         private void Scatter_DragCanceled(object sender, SurfaceDragDropEventArgs e)
@@ -681,6 +681,7 @@ namespace Drag_and_Drop
                             minute = " minutes";
                         }
                         Order_placed_left.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                        Price_label_left.Visibility = Visibility.Hidden;
                     }
                     else
                     {
@@ -719,6 +720,7 @@ namespace Drag_and_Drop
                         }
                         Order_placed_down.Visibility = Visibility.Visible;
                         Order_placed_down.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                        Price_label_down.Visibility = Visibility.Hidden;
                     }
                     else
                     {
@@ -756,6 +758,7 @@ namespace Drag_and_Drop
                         }
                         Order_placed_up.Visibility = Visibility.Visible;
                         Order_placed_up.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                        Price_label_up.Visibility = Visibility.Hidden;
                     }
                     else
                     {
@@ -794,6 +797,7 @@ namespace Drag_and_Drop
                         }
                         Order_placed_right.Visibility = Visibility.Visible;
                         Order_placed_right.Text = "ORDER PLACED\n Your order is being prepared\n Will be ready in " + tag.timeLeft + minute;
+                        Price_label_right.Visibility = Visibility.Hidden;
                     }
                     else
                     {
