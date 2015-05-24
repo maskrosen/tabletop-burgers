@@ -188,6 +188,13 @@
     <Resource Include="Images\clone_left.png" />
     <Resource Include="Images\clone_right.png" />
     <Resource Include="Images\hamicon-09.png" />
+    <Resource Include="Images\Corn.png" />
+    <Resource Include="Images\CornCup.png" />
+    <Resource Include="Images\Falafel.png" />
+    <Resource Include="Images\feature_3yoghurt1.png" />
+    <Resource Include="Images\GreenOnion.png" />
+    <Resource Include="Images\MuffenWithReadBerries.png" />
+    <Resource Include="Images\StwbaryChocoletMuffen.png" />
     <Content Include="Resources\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
