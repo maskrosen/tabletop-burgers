@@ -422,12 +422,12 @@ namespace Drag_and_Drop
             LibraryItemsRight.Add(new PhotoData("Images/Egg.png", "Egg 2   ", 10, 270));
             LibraryItemsRight.Add(new PhotoData("Images/BaconTS.png", "Bacon    ", 10, 270));
 
-            TagItems.Add(1, new Tag(1, 387, "Stockholm", new DateTime(2015, 5, 20, 12, 51, 28), 8, false, -1));
-            TagItems.Add(2, new Tag(2, 7843, "Copenhagen", new DateTime(2015, 5, 20, 14, 28, 03), -1, false, -1));
+            TagItems.Add(1, new Tag(1, 387, "Stockholm C", new DateTime(2015, 6, 4, 17, 0, 0), -1, false, -1));
+            TagItems.Add(2, new Tag(2, 7843, "Malmö", new DateTime(2015, 6, 4, 16, 15, 0), 8, false, -1));
             TagItems.Add(3, new Tag(3, 987, "Uppsala", new DateTime(2015, 5, 20, 12, 35, 0), 3, false, -1));
-            TagItems.Add(4, new Tag(4, 341, "Oslo", new DateTime(2015, 5, 20, 11, 20, 0), 15, true, 3));
-            TagItems.Add(5, new Tag(5, 501, "Malmö", new DateTime(2015, 5, 20, 11, 22, 0), -1, false, -1));
-            TagItems.Add(6, new Tag(6, 2453, "Jönköping", new DateTime(2015, 5, 20, 12, 03, 0), 12, true, 10));
+            TagItems.Add(4, new Tag(2, 7843, "Malmö", new DateTime(2015, 6, 4, 16, 15, 0), 8, false, -1));
+            TagItems.Add(5, new Tag(5, 387, "Stockholm C", new DateTime(2015, 6, 4, 17, 0, 0), -1, false, -1));
+            TagItems.Add(6, new Tag(6, 387, "Stockholm C", new DateTime(2015, 6, 4, 17, 0, 0), -1, true, 5));
 
             BurgerItems.Add(new PhotoData("Images/Burger1TS.png", "King burger", 70, 0));
             BurgerItems.Add(new PhotoData("Images/Burger2TS.png", "Popular choice", 67, 270));
@@ -1515,7 +1515,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                bottomPrice += scatterItemsTop.ElementAt(i).Price;
             }
+            Price_label_down.Text = "Price " + bottomPrice;
         }
 
         void Clonefront_TouchDown_up(object sender, TouchEventArgs e)
@@ -1538,7 +1540,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                topPrice += scatterItemsBottom.ElementAt(i).Price;
             }
+            Price_label_up.Text = "Price " + topPrice;
         }
 
         void Clonefront_TouchDown_right(object sender, TouchEventArgs e)
@@ -1561,7 +1565,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                rightPrice += scatterItemsLeft.ElementAt(i).Price;
             }
+            Price_label_right.Text = "Price " + rightPrice;
         }
 
         void Clonefront_TouchDown_left(object sender, TouchEventArgs e)
@@ -1584,7 +1590,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                leftPrice += scatterItemsRight.ElementAt(i).Price;
             }
+            Price_label_left.Text = "Price " +leftPrice;
         }
 
         
@@ -1608,7 +1616,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                topPrice += scatterItemsLeft.ElementAt(i).Price;
             }
+            Price_label_up.Text = "Price " + topPrice;
         }
 
         void Cloneright_TouchDown_down(object sender, TouchEventArgs e)
@@ -1631,7 +1641,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                bottomPrice += scatterItemsRight.ElementAt(i).Price;
             }
+            Price_label_down.Text = "Price " + bottomPrice;
         }
 
         void Cloneright_TouchDown_right(object sender, TouchEventArgs e)
@@ -1654,7 +1666,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                rightPrice += scatterItemsTop.ElementAt(i).Price;
             }
+            Price_label_right.Text = "Price " + rightPrice;
         }
 
         void Cloneright_TouchDown_left(object sender, TouchEventArgs e)
@@ -1677,7 +1691,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                leftPrice += scatterItemsBottom.ElementAt(i).Price;
             }
+            Price_label_left.Text = "Price " + leftPrice;
         }
 
         void Cloneleft_TouchDown_up(object sender, TouchEventArgs e)
@@ -1700,7 +1716,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                topPrice += scatterItemsRight.ElementAt(i).Price;
             }
+            Price_label_up.Text = "Price " + topPrice;
         }
 
         void Cloneleft_TouchDown_down(object sender, TouchEventArgs e)
@@ -1723,7 +1741,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                bottomPrice += scatterItemsLeft.ElementAt(i).Price;
             }
+            Price_label_down.Text = "Price " + bottomPrice;
         }
 
         void Cloneleft_TouchDown_right(object sender, TouchEventArgs e)
@@ -1746,7 +1766,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                rightPrice += scatterItemsBottom.ElementAt(i).Price;
             }
+            Price_label_right.Text = "Price " + rightPrice;
         }
 
         void Cloneleft_TouchDown_left(object sender, TouchEventArgs e)
@@ -1769,7 +1791,9 @@ namespace Drag_and_Drop
                     ssc.Visibility = Visibility.Hidden;
                 });
                 svi.Loaded += loadedEventHandler;
+                leftPrice += scatterItemsTop.ElementAt(i).Price;
             }
+            Price_label_left.Text = "Price " + leftPrice;
         }
     }
 }
